@@ -1,16 +1,21 @@
-## Hi there 👋
+<div align="center">
 
-<!--
-**Shivasharan53/Shivasharan53** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# 👋 Hello, I'm Shivasharanappa
 
-Here are some ideas to get you started:
+### Computer Science & Design Graduate | AI Enthusiast
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=8B5CF6&center=true&vCenter=true&width=600&lines=Building+AI+Solutions;Exploring+Software+Development;Learning+Something+New+Every+Day" />
+
+<br/>
+
+💻 Interested in AI, Python and Software Development.
+
+🚀 Currently Intern at Pragyan AI
+
+📍 India
+
+</div>
+
+---
+
+<h2 align="center">🌌 MY DEVELOPER UNIVERSE</h2>
