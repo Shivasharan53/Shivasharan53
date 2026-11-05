@@ -138,6 +138,8 @@ A machine-learning project focused on classifying fruit images.
 
 [![GitHub](https://img.shields.io/badge/Visit_my_GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shivasharan53)
 
+[![LinkedIn](https://www.linkedin.com/in/shivasharanappa-genai/)
+
 Feel free to explore my repositories and follow my learning journey.
 
 **THANKS FOR VISITING · BUILD · LEARN · GROW**
