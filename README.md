@@ -1,104 +1,152 @@
 <div align="center">
 
-# 👋 Hello, I'm Shivasharanappa
+<img src="./assets/hero.svg" alt="Shivasharanappa 3D developer banner" width="100%"/>
 
-### Computer Science & Design Graduate | AI Enthusiast
+### Computer Science & Design Graduate · AI Enthusiast · Developer
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=8B5CF6&center=true&vCenter=true&width=600&lines=Building+AI+Solutions;Exploring+Software+Development;Learning+Something+New+Every+Day" />
-
-<br/>
-
-💻 Interested in AI, Python and Software Development.
-
-🚀 Currently Intern at Pragyan AI
-
-📍 India
+[![GitHub](https://img.shields.io/badge/GitHub-Shivasharan53-111827?style=for-the-badge&logo=github)](https://github.com/Shivasharan53)
+[![Internship](https://img.shields.io/badge/Intern-Pragyan%20AI-6d28d9?style=for-the-badge)](https://github.com/Shivasharan53)
+[![Location](https://img.shields.io/badge/Location-India-0891b2?style=for-the-badge)](https://github.com/Shivasharan53)
 
 </div>
 
 ---
 
-<h2 align="center">🌌 MY DEVELOPER UNIVERSE</h2>
-
----
-
-## 👨‍💻 ABOUT ME
+## 👋 About Me
 
 <table>
 <tr>
-<td width="60%">
+<td width="62%" valign="middle">
 
-### Hi, I'm Shivasharanappa!
-
-I'm a Computer Science and Design graduate interested in building practical technology solutions.
+I'm **Shivasharanappa**, a Computer Science and Design graduate interested in AI, Python, and software development.
 
 - 🎓 B.E. in Computer Science and Design
-- 💼 Currently Intern at Pragyan AI
-- 🤖 Interested in Artificial Intelligence
-- 🐍 Exploring Python and software development
-- 🚀 Interested in innovative projects and hackathons
-- 📚 Always learning and improving my skills
+- 💼 Currently an intern at **Pragyan AI**
+- 🤖 Interested in practical AI applications
+- 🧩 Enjoy building projects and solving problems
+- 🌱 Always learning and improving my development skills
 
 </td>
-<td width="40%" align="center">
+<td width="38%" align="center" valign="middle">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Shivasharan53&show_icons=true&theme=tokyonight&hide_border=true" width="100%"/>
+<img src="./assets/profile-photo.jpg" width="230" alt="Shivasharanappa"/>
+
+**Building. Learning. Creating.**
 
 </td>
 </tr>
 </table>
 
----
-
-## 🌱 MY DEVELOPER JOURNEY
-
-🎓 Education → 💻 Development → 🤖 AI → 🚀 Innovation
-
----
-
-<h2 align="center">🌌 MY 3D DEVELOPER IDENTITY</h2>
-
-<div align="center">
-
-<img src="./assets/profile-photo.jpg"
-     width="280"
-     alt="Shivasharanappa's profile photo"/>
-
-### Shivasharanappa
-
-💻 AI Enthusiast | Software Developer
-
-🚀 Turning ideas into practical solutions.
-
-</div>
-
----
-
----
-
-<h2 align="center">🚀 FEATURED PROJECTS</h2>
+## 🧭 My Journey
 
 <table>
 <tr>
-<td width="50%">
+<td align="center" width="33%">
+
+🎓
+
+**Education**
+
+B.E. in Computer Science and Design
+
+</td>
+<td align="center" width="33%">
+
+💻
+
+**Development**
+
+Learning and building software projects
+
+</td>
+<td align="center" width="33%">
+
+🤖
+
+**AI**
+
+Currently interning at Pragyan AI
+
+</td>
+</tr>
+</table>
+
+## 🚀 Featured Projects
+
+<table>
+<tr>
+<td width="50%" valign="top">
 
 ### 🎙️ Speech-to-Text Transcription
 
-Converting spoken audio into text using speech recognition.
+A project focused on converting spoken audio into text using speech recognition.
 
-<a href="https://github.com/Shivasharan53/Speech-to-text-transcription">View Repository →</a>
+[**View repository →**](https://github.com/Shivasharan53/Speech-to-text-transcription)
 
 </td>
-<td width="50%">
+<td width="50%" valign="top">
 
-### 🍎 Fruit Image Classifier
+### 🍎 Image Classifier for Fruits
 
-An image classification project focused on identifying fruits.
+A machine-learning project focused on classifying fruit images.
 
-<a href="https://github.com/Shivasharan53/Image-classifier-for-fruits">View Repository →</a>
+[**View repository →**](https://github.com/Shivasharan53/Image-classifier-for-fruits)
 
 </td>
 </tr>
 </table>
 
+> More projects will be added here as their descriptions and repository links are confirmed.
+
+## 🧰 Technology & Tools
+
+<div align="center">
+
+<!-- Keep only technologies you have personally used. Remove any badge that does not apply. -->
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+
+</div>
+
+## 📊 GitHub Activity
+
+<div align="center">
+
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=Shivasharan53&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" alt="GitHub statistics"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shivasharan53&layout=compact&theme=tokyonight&hide_border=true" alt="Most used languages"/>
+
+<img src="https://streak-stats.demolab.com?user=Shivasharan53&theme=tokyonight&hide_border=true" alt="GitHub streak"/>
+
+</div>
+
+## 🌟 Beyond Coding
+
+<div align="center">
+
+| 🧠 Continuous Learning | 🏆 Hackathons | 💡 Tech Events |
+|:---:|:---:|:---:|
+| Exploring new skills | Building with teams | Learning from the community |
+
+</div>
+
+## 🤝 Connect With Me
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/Shivasharan53)
+
+</div>
+
 ---
+
+<div align="center">
+
+*Thanks for visiting my profile. Feel free to explore my repositories!*
+
+**BUILD • LEARN • GROW**
+
+</div>
