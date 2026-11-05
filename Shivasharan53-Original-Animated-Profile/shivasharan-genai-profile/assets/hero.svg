@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111b24"/><stop offset="1" stop-color="#243a3b"/></linearGradient>
+ <linearGradient id="accent"><stop stop-color="#d7a84b"/><stop offset="1" stop-color="#72c6ae"/></linearGradient>
+ <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#d9eee8" stroke-opacity=".07"/></pattern>
+</defs>
+<rect width="1000" height="300" rx="28" fill="url(#bg)"/><rect width="1000" height="300" rx="28" fill="url(#grid)"/>
+<circle cx="840" cy="140" r="105" fill="#72c6ae" opacity=".08"/><circle cx="840" cy="140" r="78" fill="none" stroke="#d7a84b" stroke-opacity=".55" stroke-width="1.5"/>
+<circle cx="840" cy="140" r="52" fill="none" stroke="#72c6ae" stroke-opacity=".7" stroke-dasharray="5 8"><animateTransform attributeName="transform" type="rotate" from="0 840 140" to="360 840 140" dur="24s" repeatCount="indefinite"/></circle>
+<g fill="#e8f1ed"><text x="64" y="70" font-family="Arial,sans-serif" font-size="15" letter-spacing="4" fill="#d7a84b">BUILDING WITH INTELLIGENCE</text>
+<text x="62" y="135" font-family="Arial,sans-serif" font-size="43" font-weight="700">Hi, I'm Shivasharanappa</text>
+<text x="64" y="177" font-family="Arial,sans-serif" font-size="23" fill="#72c6ae">Generative AI Engineer Intern</text>
+<text x="64" y="215" font-family="Arial,sans-serif" font-size="15" fill="#b9cbc5">Exploring AI, Python and practical software solutions.</text>
+</g>
+<g transform="translate(840 140)"><path d="M0 -38 L11 -11 L38 0 L11 11 L0 38 L-11 11 L-38 0 L-11 -11Z" fill="#d7a84b"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="18s" repeatCount="indefinite"/></path><circle r="8" fill="#172a2d"/></g>
+<rect x="64" y="245" width="188" height="28" rx="14" fill="#72c6ae" fill-opacity=".14" stroke="#72c6ae" stroke-opacity=".6"/>
+<text x="82" y="264" font-family="Arial,sans-serif" font-size="12" fill="#a8e0cf" letter-spacing="1">OPEN TO LEARNING &amp; COLLABORATION</text>
+</svg>

@@ -1,0 +1,23 @@
+INSTALL THIS PROFILE DESIGN
+
+1. Open your special GitHub profile repository: Shivasharan53/Shivasharan53
+2. Download and extract this ZIP.
+3. Upload README.md and the complete assets folder into the repository root.
+4. Commit the files.
+5. Open your GitHub profile and refresh.
+
+Design direction:
+- Inspired by the uploaded two-page guide's modular animated-profile concept.
+- Original palette: deep forest/charcoal, warm brass, and muted jade.
+- Different layout, shapes, copy, and visual identity; not a copy of the guide.
+- SVGs use lightweight vector elements and a small SMIL orbit animation in the hero.
+- No fabricated stats, email address, hobbies, or city are included.
+
+Personal details used:
+- GitHub: Shivasharan53
+- Role: Generative AI Engineer Intern
+- Organization: Pragyan AI
+- Education: B.E. Computer Science and Design
+- LinkedIn: https://www.linkedin.com/in/shivasharanappa-genai/
+
+Before publishing, verify that the role, organization, education and LinkedIn URL are still accurate.
