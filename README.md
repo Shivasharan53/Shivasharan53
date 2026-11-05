@@ -53,3 +53,52 @@ I'm a Computer Science and Design graduate interested in building practical tech
 ## 🌱 MY DEVELOPER JOURNEY
 
 🎓 Education → 💻 Development → 🤖 AI → 🚀 Innovation
+
+---
+
+<h2 align="center">🌌 MY 3D DEVELOPER IDENTITY</h2>
+
+<div align="center">
+
+<img src="./assets/profile-photo.jpg"
+     width="280"
+     alt="Shivasharanappa's profile photo"/>
+
+### Shivasharanappa
+
+💻 AI Enthusiast | Software Developer
+
+🚀 Turning ideas into practical solutions.
+
+</div>
+
+---
+
+---
+
+<h2 align="center">🚀 FEATURED PROJECTS</h2>
+
+<table>
+<tr>
+<td width="50%">
+
+### 🎙️ Speech-to-Text Transcription
+
+Converting spoken audio into text using speech recognition.
+
+<a href="https://github.com/Shivasharan53/Speech-to-text-transcription">View Repository →</a>
+
+</td>
+<td width="50%">
+
+### 🍎 Fruit Image Classifier
+
+An image classification project focused on identifying fruits.
+
+<a href="https://github.com/Shivasharan53/Image-classifier-for-fruits">View Repository →</a>
+
+</td>
+</tr>
+</table>
+
+---
