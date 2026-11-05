@@ -1,77 +1,73 @@
 <div align="center">
 
-<img src="./assets/hero.svg" alt="Shivasharanappa 3D developer banner" width="100%"/>
+<img src="./assets/hero.svg" alt="Shivasharanappa developer banner" width="100%"/>
 
-### Computer Science & Design Graduate · AI Enthusiast · Developer
+### COMPUTER SCIENCE & DESIGN GRADUATE · AI ENTHUSIAST · DEVELOPER
 
 [![GitHub](https://img.shields.io/badge/GitHub-Shivasharan53-111827?style=for-the-badge&logo=github)](https://github.com/Shivasharan53)
-[![Internship](https://img.shields.io/badge/Intern-Pragyan%20AI-6d28d9?style=for-the-badge)](https://github.com/Shivasharan53)
-[![Location](https://img.shields.io/badge/Location-India-0891b2?style=for-the-badge)](https://github.com/Shivasharan53)
+[![Pragyan AI](https://img.shields.io/badge/Intern-Pragyan%20AI-6d28d9?style=for-the-badge)](https://github.com/Shivasharan53)
+[![India](https://img.shields.io/badge/Based_in-India-0891b2?style=for-the-badge)](https://github.com/Shivasharan53)
 
 </div>
 
 ---
 
-## 👋 About Me
+## ✦ ABOUT ME
 
 <table>
 <tr>
-<td width="62%" valign="middle">
+<td width="64%" valign="middle">
 
-I'm **Shivasharanappa**, a Computer Science and Design graduate interested in AI, Python, and software development.
+Hi, I'm **Shivasharanappa**.
+
+I'm a Computer Science and Design graduate interested in artificial intelligence, Python, and software development. I enjoy learning by building projects and exploring practical technology solutions.
 
 - 🎓 B.E. in Computer Science and Design
 - 💼 Currently an intern at **Pragyan AI**
 - 🤖 Interested in practical AI applications
-- 🧩 Enjoy building projects and solving problems
-- 🌱 Always learning and improving my development skills
+- 🧩 Exploring software development and problem-solving
+- 🌱 Always learning and improving my skills
 
 </td>
-<td width="38%" align="center" valign="middle">
+<td width="36%" align="center" valign="middle">
 
-<img src="./assets/profile-photo.jpg" width="230" alt="Shivasharanappa"/>
+<img src="./assets/profile-photo.jpg" width="220" alt="Shivasharanappa"/>
 
-**Building. Learning. Creating.**
+**BUILD · LEARN · CREATE**
 
 </td>
 </tr>
 </table>
 
-## 🧭 My Journey
+## ◈ MY JOURNEY
 
 <table>
 <tr>
 <td align="center" width="33%">
 
-🎓
-
-**Education**
+### 🎓 EDUCATION
 
 B.E. in Computer Science and Design
 
 </td>
 <td align="center" width="33%">
 
-💻
+### 💻 DEVELOPMENT
 
-**Development**
-
-Learning and building software projects
+Learning through software projects
 
 </td>
 <td align="center" width="33%">
 
-🤖
+### 🤖 AI
 
-**AI**
-
-Currently interning at Pragyan AI
+Intern at Pragyan AI
 
 </td>
 </tr>
 </table>
 
-## 🚀 Featured Projects
+## 🚀 FEATURED PROJECTS
 
 <table>
 <tr>
@@ -81,7 +77,7 @@ Currently interning at Pragyan AI
 
 A project focused on converting spoken audio into text using speech recognition.
 
-[**View repository →**](https://github.com/Shivasharan53/Speech-to-text-transcription)
+[**Explore repository ↗**](https://github.com/Shivasharan53/Speech-to-text-transcription)
 
 </td>
 <td width="50%" valign="top">
@@ -90,63 +86,60 @@ A project focused on converting spoken audio into text using speech recognition.
 
 A machine-learning project focused on classifying fruit images.
 
-[**View repository →**](https://github.com/Shivasharan53/Image-classifier-for-fruits)
+[**Explore repository ↗**](https://github.com/Shivasharan53/Image-classifier-for-fruits)
 
 </td>
 </tr>
 </table>
 
-> More projects will be added here as their descriptions and repository links are confirmed.
+<div align="center">
 
-## 🧰 Technology & Tools
+[**Explore all 35 repositories →**](https://github.com/Shivasharan53?tab=repositories)
+
+</div>
+
+## 🧰 TECHNOLOGY & TOOLS
 
 <div align="center">
 
-<!-- Keep only technologies you have personally used. Remove any badge that does not apply. -->
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 </div>
 
-## 📊 GitHub Activity
+## 📊 GITHUB ACTIVITY
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=Shivasharan53&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" alt="GitHub statistics"/>
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shivasharan53&layout=compact&theme=tokyonight&hide_border=true" alt="Most used languages"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=Shivasharan53&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" alt="GitHub statistics"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shivasharan53&layout=compact&theme=tokyonight&hide_border=true" alt="Most used languages"/>
 
-<img src="https://streak-stats.demolab.com?user=Shivasharan53&theme=tokyonight&hide_border=true" alt="GitHub streak"/>
+<img src="https://streak-stats.demolab.com?user=Shivasharan53&theme=tokyonight&hide_border=true" alt="GitHub contribution streak"/>
 
 </div>
 
-## 🌟 Beyond Coding
+## ✧ BEYOND THE SCREEN
 
 <div align="center">
 
-| 🧠 Continuous Learning | 🏆 Hackathons | 💡 Tech Events |
+| 🧠 CONTINUOUS LEARNING | 🏆 HACKATHONS | 💡 TECH EVENTS |
 |:---:|:---:|:---:|
-| Exploring new skills | Building with teams | Learning from the community |
+| Exploring new skills | Learning by building with others | Connecting with the tech community |
 
 </div>
 
-## 🤝 Connect With Me
+## 🤝 LET'S CONNECT
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/Shivasharan53)
+[![GitHub](https://img.shields.io/badge/Visit_my_GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shivasharan53)
 
-</div>
+Feel free to explore my repositories and follow my learning journey.
 
----
-
-<div align="center">
-
-*Thanks for visiting my profile. Feel free to explore my repositories!*
-
-**BUILD • LEARN • GROW**
+**THANKS FOR VISITING · BUILD · LEARN · GROW**
 
 </div>
