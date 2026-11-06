@@ -13,6 +13,6 @@
 <text x="64" y="215" font-family="Arial,sans-serif" font-size="15" fill="#b9cbc5">Exploring AI, Python and practical software solutions.</text>
 </g>
 <g transform="translate(840 140)"><path d="M0 -38 L11 -11 L38 0 L11 11 L0 38 L-11 11 L-38 0 L-11 -11Z" fill="#d7a84b"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="18s" repeatCount="indefinite"/></path><circle r="8" fill="#172a2d"/></g>
-<rect x="84" y="270" width="188" height="28" rx="14" fill="#72c6ae" fill-opacity=".14" stroke="#72c6ae" stroke-opacity=".6"/>
+<rect x="64" y="270" width="188" height="28" rx="14" fill="#72c6ae" fill-opacity=".14" stroke="#72c6ae" stroke-opacity=".6"/>
 <text x="82" y="264" font-family="Arial,sans-serif" font-size="12" fill="#a8e0cf" letter-spacing="1">OPEN TO LEARNING &amp; COLLABORATION</text>
 </svg>
