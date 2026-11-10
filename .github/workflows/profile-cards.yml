@@ -32,8 +32,8 @@ jobs:
 
       - name: Fetch contribution history
         env:
-          # Create PROFILE_TOKEN with read:user scope and add it under
-          # Settings > Secrets and variables > Actions.
+          # The default GITHUB_TOKEN works for this public contribution query.
+          # PROFILE_TOKEN may be set as an optional override if your account needs it.
           GH_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           python - <<'PY'
