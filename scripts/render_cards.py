@@ -335,225 +335,233 @@ def render_contributions(rows):
     save_card("contributions.svg", s)
 
 
-def render_dashboard(data, rows):
-    """Render a single, compact developer dashboard for the profile README."""
-    width, height = 1320, 930
-    total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
-    repo_count = int(CONFIG.get("repo_count", 0))
-    avatar_url = CONFIG.get("avatar_url", "").strip()
-    bg, panel, panel2 = "#0b1017", "#131c27", "#192533"
-    text_color, muted = "#edf4f8", "#8ea1b5"
-    green, cyan, purple, gold = "#39df91", "#42c8d5", "#9a8cff", "#f3c969"
-    s = [f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
- width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Shivasharanappa developer dashboard">
-<title>Shivasharanappa | Generative AI Engineer Dashboard</title>
+
+def widget_text(x, y, value, size=12, color="#edf4f8", weight=400, anchor="start", spacing=0):
+    return f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{color}" text-anchor="{anchor}" letter-spacing="{spacing}">{esc(value)}</text>'
+
+
+def widget_start(width, height, title, subtitle, accent="#39df91"):
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{esc(title)}">
+<title>{esc(title)}</title>
 <defs>
- <linearGradient id="dashBg" x1="0" y1="0" x2="1" y2="1">
-  <stop offset="0" stop-color="#080d14"/><stop offset="1" stop-color="#111b2a"/>
- </linearGradient>
- <linearGradient id="dashPanel" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#1a2735"/><stop offset="1" stop-color="#111a25"/>
- </linearGradient>
- <linearGradient id="dashTop" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="#39df91"/><stop offset=".55" stop-color="#42c8d5"/><stop offset="1" stop-color="#9a8cff"/>
- </linearGradient>
- <linearGradient id="dashGreen" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#65f3ae"/><stop offset="1" stop-color="#138b62"/>
- </linearGradient>
- <filter id="dashShadow" x="-25%" y="-25%" width="155%" height="175%">
-  <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/>
-  <feOffset in="blur" dx="0" dy="7" result="off"/>
-  <feComponentTransfer in="off" result="shadow"><feFuncA type="linear" slope=".38"/></feComponentTransfer>
-  <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
- </filter>
- <filter id="dashGlow" x="-80%" y="-80%" width="260%" height="260%">
-  <feGaussianBlur stdDeviation="9" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
- </filter>
- <pattern id="dashGrid" width="26" height="26" patternUnits="userSpaceOnUse">
-  <path d="M26 0H0V26" fill="none" stroke="#9bb6cb" stroke-opacity=".035" stroke-width="1"/>
- </pattern>
- <clipPath id="avatarClip"><circle cx="150" cy="164" r="49"/></clipPath>
- <style>text{{font-family:Inter,Arial,Helvetica,sans-serif}}.muted{{fill:#8ea1b5}}</style>
+ <linearGradient id="wbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111d2a"/><stop offset="1" stop-color="#0b121c"/></linearGradient>
+ <linearGradient id="wtop" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{accent}"/><stop offset="1" stop-color="#9a8cff"/></linearGradient>
+ <linearGradient id="wglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset="1" stop-color="#ffffff" stop-opacity=".025"/></linearGradient>
+ <filter id="wshadow" x="-25%" y="-25%" width="160%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/><feOffset dy="6" dx="1" result="o"/><feComponentTransfer in="o" result="s"><feFuncA type="linear" slope=".48"/></feComponentTransfer><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="wglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
-<rect width="1320" height="930" rx="28" fill="url(#dashBg)"/>
-<rect width="1320" height="930" rx="28" fill="url(#dashGrid)"/>
-<circle cx="1110" cy="110" r="170" fill="#2e9f83" opacity=".055" filter="url(#dashGlow)"/>
-<circle cx="180" cy="765" r="150" fill="#6250b4" opacity=".06" filter="url(#dashGlow)"/>
-''']
-    def txt(x, y, value, size=12, color=text_color, weight=400, spacing=0, anchor="start"):
-        s.append(f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{color}" letter-spacing="{spacing}" text-anchor="{anchor}">{esc(value)}</text>')
-    def panel(x, y, w, h, accent=green, radius=19):
-        # Offset base plate creates a visible 3D extrusion beneath each glass panel.
-        s.append(f'<rect x="{x+7}" y="{y+9}" width="{w}" height="{h}" rx="{radius}" fill="#070c13" stroke="{accent}" stroke-opacity=".42"/>')
-        s.append(f'<path d="M{x+radius+8} {y+h+9}H{x+w-radius+8}" stroke="{accent}" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>')
-        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="url(#dashPanel)" stroke="{accent}" stroke-opacity=".36" filter="url(#dashShadow)"/>')
-        s.append(f'<path d="M{x+radius} {y+1}H{x+w-radius}" stroke="{accent}" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/>')
-    def small_panel(x, y, w, h, accent=green):
-        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="13" fill="{panel2}" stroke="{accent}" stroke-opacity=".28"/>')
-        s.append(f'<path d="M{x+13} {y+1}H{x+w-13}" stroke="{accent}" stroke-opacity=".42" stroke-width="1.4"/>')
-    def chip(x, y, label, color=green, w=125):
-        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="25" rx="12" fill="{color}" fill-opacity=".10" stroke="{color}" stroke-opacity=".45"/>')
-        txt(x+w/2, y+16.5, label, 10.3, color, 700, .25, "middle")
-    def section_title(x, y, label, subtitle=""):
-        txt(x, y, label, 11, green, 700, 2.1)
-        if subtitle:
-            txt(x, y+18, subtitle, 10, muted, 400, .2)
+<rect x="0.5" y="0.5" width="{width-1}" height="{height-1}" rx="20" fill="url(#wbg)" stroke="#405366" stroke-opacity=".75"/>
+<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="19" fill="url(#wglass)"/>
+<path d="M22 2H{width-22}" stroke="url(#wtop)" stroke-width="2.5" stroke-linecap="round" opacity=".95"/>
+{widget_text(22, 31, title.upper(), 10.5, accent, 700, spacing=1.5)}
+{widget_text(22, 49, subtitle, 9.5, "#91a5b8", 400)}
+'''
 
-    # Top application bar
-    s.append('<rect x="24" y="18" width="1272" height="46" rx="14" fill="#101923" stroke="#263747"/>')
-    # Small isometric cube mark in the header.
-    s.append('<path d="M49 25L64 34L49 43L34 34Z" fill="#b6ffe0" stroke="#e8fff4" stroke-width="1"/>')
-    s.append('<path d="M34 34L49 43V59L34 50Z" fill="#16885f" stroke="#70f0b4" stroke-width="1"/>')
-    s.append('<path d="M49 43L64 34V50L49 59Z" fill="#277ba1" stroke="#93ebff" stroke-width="1"/>')
-    txt(72, 45, "SHIVA  /  DEVELOPER DASHBOARD", 11, text_color, 700, 1.7)
-    s.append('<circle cx="1134" cy="41" r="4" fill="#39df91" filter="url(#dashGlow)"/>')
-    txt(1147, 45, "3D DEVELOPER PROFILE", 9.5, muted, 700, 1.1)
 
-    # Left profile panel
-    panel(24, 82, 252, 390, green)
-    txt(47, 112, "PROFILE", 10, green, 700, 2)
-    s.append('<circle cx="150" cy="164" r="56" fill="#253c48" stroke="url(#dashTop)" stroke-width="3" filter="url(#dashGlow)"/>')
-    s.append('<circle cx="150" cy="164" r="49" fill="#1c2a3c"/>')
-    s.append('<image x="101" y="115" width="98" height="98" href="avatar.png" xlink:href="avatar.png" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarClip)"/>')
-    txt(150, 245, CONFIG.get("name", "Shivasharanappa").upper(), 17, text_color, 800, .6, "middle")
-    txt(150, 268, "GENERATIVE AI ENGINEER INTERN", 9.6, purple, 700, .75, "middle")
-    txt(150, 291, "Pragyan AI", 12, muted, 500, .2, "middle")
-    s.append('<path d="M47 310H253" stroke="#344454"/>')
-    txt(48, 334, "EDUCATION", 9.5, gold, 700, 1.4)
-    txt(48, 354, "B.E. · Computer Science & Design", 10.5, text_color, 600)
-    txt(48, 372, "PDA College of Engineering", 10, muted, 400)
-    small_panel(43, 390, 102, 40, green)
-    small_panel(155, 390, 102, 40, cyan)
-    txt(94, 407, str(repo_count), 16, green, 800, 0, "middle")
-    txt(94, 420, "REPOSITORIES", 8, muted, 700, .8, "middle")
-    txt(206, 407, f"{total:,}", 16, cyan, 800, 0, "middle")
-    txt(206, 420, "CONTRIBUTIONS", 8, muted, 700, .8, "middle")
-    txt(150, 454, "GITHUB  ·  LINKEDIN  ·  EMAIL", 8.5, muted, 700, 1, "middle")
+def widget_metric(x, y, w, label, value, accent):
+    out = [f'<rect x="{x}" y="{y}" width="{w}" height="59" rx="11" fill="#1b2a39" stroke="{accent}" stroke-opacity=".34"/>']
+    out.append(f'<path d="M{x+11} {y+1}H{x+w-11}" stroke="{accent}" stroke-opacity=".55" stroke-width="1.5"/>')
+    out.append(widget_text(x+11, y+19, label.upper(), 7.8, "#91a5b8", 700, spacing=.7))
+    out.append(widget_text(x+11, y+46, value, 19, accent, 800))
+    return "".join(out)
 
-    # Center activity and metrics
-    panel(294, 82, 644, 390, cyan)
-    section_title(318, 111, "GITHUB ACTIVITY", "A snapshot of the last 365 days")
-    metric_data = [
-        ("CONTRIBUTIONS", f"{total:,}", green),
-        ("ACTIVE DAYS", str(active), cyan),
-        ("PUBLIC REPOS", str(repo_count), purple),
+
+def render_widget_profile():
+    w, h = 280, 348
+    accent, cyan, purple = "#39df91", "#42c8d5", "#9a8cff"
+    s = widget_start(w, h, "Profile", "DEVELOPER IDENTITY", accent)
+    s += '<circle cx="140" cy="116" r="59" fill="#243b49" stroke="#39df91" stroke-width="2.5" filter="url(#wglow)"/>'
+    s += '<circle cx="140" cy="116" r="51" fill="#172638"/>'
+    avatar = CONFIG.get("avatar_url", "").strip()
+    s += '<defs><clipPath id="profileAvatar"><circle cx="140" cy="116" r="49"/></clipPath></defs>'
+    if avatar:
+        s += f'<image x="91" y="67" width="98" height="98" href="{esc(avatar)}" xlink:href="{esc(avatar)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#profileAvatar)"/>'
+    else:
+        s += widget_text(140, 125, "SP", 27, "#ffffff", 800, "middle")
+    s += widget_text(140, 199, CONFIG.get("name", "Shivasharanappa"), 16, "#f4f7fb", 800, "middle")
+    s += widget_text(140, 221, "GENERATIVE AI ENGINEER INTERN", 8.5, purple, 700, "middle", .8)
+    s += widget_text(140, 240, "Pragyan AI", 10.5, "#b8c8d6", 500, "middle")
+    s += '<path d="M22 258H258" stroke="#34495d"/>'
+    s += widget_metric(20, 273, 112, "Repositories", str(CONFIG.get("repo_count", 0)), accent)
+    # contribution count is added by the activity card, so keep this tile factual and static-free.
+    s += widget_metric(145, 273, 115, "Speciality", "GenAI", cyan)
+    s += '</svg>'
+    save_card("widget-profile.svg", s)
+
+
+def render_widget_activity(data, rows):
+    w, h = 620, 348
+    accent, cyan, purple, gold = "#39df91", "#42c8d5", "#9a8cff", "#f3c969"
+    total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
+    s = widget_start(w, h, "GitHub activity", "LIVE PROFILE SNAPSHOT · LAST 365 DAYS", cyan)
+    stats = [
+        ("Contributions", f"{total:,}", accent),
+        ("Active days", str(active), cyan),
+        ("Current streak", f"{streak}d", purple),
+        ("Repositories", str(CONFIG.get("repo_count", 0)), gold),
     ]
-    for i, (label, value, accent) in enumerate(metric_data):
-        x = 315 + i*201
-        small_panel(x, 143, 185, 76, accent)
-        txt(x+15, 166, label, 8.7, muted, 700, .8)
-        txt(x+15, 202, value, 25, accent, 800)
-        s.append(f'<circle cx="{x+159}" cy="181" r="8" fill="{accent}" fill-opacity=".16"/>')
-        s.append(f'<circle cx="{x+159}" cy="181" r="3.5" fill="{accent}"/>')
-
-    txt(319, 250, "MONTHLY CONTRIBUTIONS", 9.5, muted, 700, 1.3)
-    month_counts = Counter()
+    for i, (label, value, color) in enumerate(stats):
+        s += widget_metric(18+i*148, 68, 137, label, value, color)
+    s += widget_text(22, 159, "MONTHLY CONTRIBUTIONS", 9.5, "#b8c8d6", 700, spacing=1.1)
+    monthly = Counter()
     for day, count in rows:
-        month_counts[day.strftime("%Y-%m")] += count
-    month_keys = sorted(month_counts)[-6:]
-    if not month_keys:
-        month_keys = [date.today().strftime("%Y-%m")]
-        month_counts[month_keys[0]] = 0
-    max_month = max([month_counts[k] for k in month_keys] + [1])
-    baseline = 354
-    for i, key in enumerate(month_keys):
-        x = 340 + i*93
-        value = month_counts[key]
-        bar_h = max(3, round(63*value/max_month)) if value else 3
-        s.append(f'<rect x="{x}" y="{baseline-64}" width="45" height="64" rx="7" fill="#253444"/>')
-        s.append(f'<rect x="{x}" y="{baseline-bar_h}" width="45" height="{bar_h}" rx="7" fill="url(#dashGreen)"/>')
-        txt(x+22.5, baseline-bar_h-7, str(value), 8.8, green if value else muted, 600, 0, "middle")
-        mlabel = date(int(key[:4]), int(key[5:7]), 1).strftime("%b")
-        txt(x+22.5, baseline+15, mlabel, 9.2, muted, 500, 0, "middle")
+        monthly[day.strftime("%Y-%m")] += count
+    keys = sorted(monthly)[-6:]
+    if not keys:
+        keys = [date.today().strftime("%Y-%m")]
+        monthly[keys[0]] = 0
+    maxv = max([monthly[k] for k in keys] + [1])
+    base = 286
+    for i, key in enumerate(keys):
+        x = 42+i*91
+        val = monthly[key]
+        bh = max(3, round(85*val/maxv)) if val else 3
+        s += f'<rect x="{x}" y="{base-88}" width="48" height="88" rx="8" fill="#203244"/>'
+        s += f'<rect x="{x}" y="{base-bh}" width="48" height="{bh}" rx="8" fill="url(#wtop)"/>'
+        s += widget_text(x+24, base-bh-8, str(val), 8.5, accent if val else "#91a5b8", 700, "middle")
+        label = date(int(key[:4]), int(key[5:7]), 1).strftime("%b")
+        s += widget_text(x+24, base+17, label, 9, "#91a5b8", 500, "middle")
+    s += widget_text(22, 329, f"Updated {data.get('as_of', 'daily sync')} · busiest day: {busiest}", 8.5, "#91a5b8")
+    s += '</svg>'
+    save_card("widget-activity.svg", s)
 
-    txt(319, 392, "CONTRIBUTION MAP  ·  LAST 365 DAYS", 9.2, muted, 700, 1.15)
-    if rows:
-        first = rows[0][0]
-        offset = (first.weekday()+1) % 7
-        for i, (day, count) in enumerate(rows):
-            col, row = (i+offset)//7, (i+offset)%7
-            x, y = 319 + col*9.1, 402 + row*9
-            color = "#1d2b37" if count == 0 else ("#145c48" if count < 4 else "#17845b" if count < 10 else "#29b976" if count < 22 else "#65edaa")
-            s.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="6.8" height="6.8" rx="1.8" fill="{color}"/>')
-    txt(319, 465, f"Updated {data.get('as_of', 'daily sync')}  ·  {active} active days", 8.6, muted, 400)
 
-    # Right stack panel
-    panel(956, 82, 340, 390, purple)
-    section_title(980, 111, "CORE TOOLKIT", "Technologies used across projects")
+def render_widget_toolkit():
+    w, h = 320, 348
+    accent, cyan, purple, gold = "#39df91", "#42c8d5", "#9a8cff", "#f3c969"
+    s = widget_start(w, h, "Core toolkit", "TECHNOLOGIES USED IN MY PROJECTS", purple)
     tools = [
         ("PYTHON", "SQL"), ("PYSPARK", "POWER BI"),
         ("LANGCHAIN", "FAISS"), ("STREAMLIT", "FASTAPI"),
         ("PANDAS", "NUMPY"), ("GROQ", "HUGGING FACE"),
     ]
+    colors = [accent, cyan, purple, gold, accent, cyan]
     for i, pair in enumerate(tools):
-        yy = 151 + i*42
-        chip(980, yy, pair[0], green if i%2==0 else cyan, 137)
-        chip(1137, yy, pair[1], purple if i%2==0 else gold, 137)
-    s.append('<path d="M980 414H1272" stroke="#344454"/>')
-    txt(980, 438, "FOCUS", 9, gold, 700, 1.4)
-    txt(1030, 438, "LLMs  ·  RAG  ·  ML  ·  COMPUTER VISION", 9.2, muted, 600, .1)
+        y = 76+i*39
+        for j, label in enumerate(pair):
+            x = 18+j*145
+            color = colors[i] if j == 0 else (purple if i%2 == 0 else gold)
+            s += f'<rect x="{x}" y="{y}" width="135" height="27" rx="9" fill="#1c2b3a" stroke="{color}" stroke-opacity=".48" filter="url(#wshadow)"/>'
+            s += f'<path d="M{x+8} {y+1}H{x+127}" stroke="{color}" stroke-opacity=".55"/>'
+            s += widget_text(x+67.5, y+18, label, 8.3, "#edf4f8", 700, "middle", .4)
+    s += '<path d="M20 319H300" stroke="#35495d"/>'
+    s += widget_text(20, 337, "LLMs  ·  RAG  ·  ML  ·  COMPUTER VISION", 8.2, "#b8c8d6", 600)
+    s += '</svg>'
+    save_card("widget-toolkit.svg", s)
 
-    # About panel
-    panel(24, 493, 388, 382, purple)
-    section_title(48, 524, "ABOUT ME", "Curious mind. Practical builder.")
-    txt(48, 580, "Computer Science & Design graduate", 13, text_color, 700)
-    txt(48, 603, "from PDA College of Engineering.", 12, muted, 400)
-    txt(48, 642, "Currently a Generative AI Engineer", 12, text_color, 600)
-    txt(48, 663, "Intern at Pragyan AI.", 12, muted, 400)
-    txt(48, 702, "I enjoy building useful applications", 11.5, muted, 400)
-    txt(48, 722, "across LLMs, data and computer vision.", 11.5, muted, 400)
-    chip(48, 765, "GENAI", green, 86)
-    chip(146, 765, "DATA", cyan, 86)
-    chip(244, 765, "COMPUTER VISION", purple, 145)
 
-    # Experience and education panel
-    panel(426, 493, 400, 382, gold)
-    section_title(450, 524, "EXPERIENCE & EDUCATION", "Learning through practical work")
-    s.append('<circle cx="456" cy="566" r="4" fill="#39df91"/>')
-    txt(472, 570, "Generative AI Engineer Intern", 12, text_color, 700)
-    txt(472, 591, "Pragyan AI", 10.5, green, 700)
-    txt(472, 609, "GenAI applications · LLMs · Python", 9.5, muted, 400)
-    s.append('<circle cx="456" cy="638" r="4" fill="#42c8d5"/>')
-    txt(472, 642, "Big Data Analytics Intern", 12, text_color, 700)
-    txt(472, 663, "Krugna Technologies", 10.5, cyan, 700)
-    txt(472, 681, "Python · PySpark · SQL · Power BI", 9.5, muted, 400)
-    s.append('<path d="M450 704H801" stroke="#344454"/>')
-    txt(450, 731, "EDUCATION", 9.5, gold, 700, 1.6)
-    txt(450, 754, "B.E. · Computer Science & Design", 10.5, text_color, 600)
-    txt(450, 772, "PDA College of Engineering", 9.5, muted, 400)
-    txt(450, 806, "Diploma · Mechanical Engineering", 10.5, text_color, 600)
-    txt(450, 824, "Government Polytechnic, Gulbarga", 9.5, muted, 400)
-    txt(450, 853, "Degree completed  ·  Diploma completed in 2023", 8.2, muted, 400)
-
-    # Project showcase panel
-    panel(840, 493, 456, 382, green)
-    section_title(864, 524, "SELECTED PROJECTS", "A few things I have built")
-    projects = [
-        ("NammaClean AI", "Waste classification with MobileNetV2"),
-        ("Live Market Sales Analysis", "Market data analysis and forecasting"),
-        ("Document Voice Studio", "Document-to-text and voice workflows"),
-        ("SmartLoan India", "Loan discovery and EMI calculations"),
-        ("CampusScope", "College information discovery"),
-        ("PragyanAI Image Studio", "AI-powered image editing tools"),
+def render_widget_about():
+    w, h = 400, 226
+    accent, cyan, purple = "#9a8cff", "#42c8d5", "#39df91"
+    s = widget_start(w, h, "About me", "A QUICK INTRODUCTION", accent)
+    lines = [
+        ("Computer Science & Design graduate", 82, "#edf4f8", 600),
+        ("PDA College of Engineering", 103, "#91a5b8", 400),
+        ("Generative AI Engineer Intern at Pragyan AI", 139, "#edf4f8", 600),
+        ("Building practical applications with Python,", 171, "#91a5b8", 400),
+        ("LLMs, machine learning and computer vision.", 190, "#91a5b8", 400),
     ]
-    for i, (name, desc) in enumerate(projects):
-        y = 545 + i*49
-        accent = green if i%3==0 else cyan if i%3==1 else purple
-        s.append(f'<rect x="860" y="{y}" width="416" height="43" rx="10" fill="#1a2936" stroke="{accent}" stroke-opacity=".23"/>')
-        s.append(f'<rect x="860" y="{y}" width="4" height="43" rx="2" fill="{accent}"/>')
-        txt(876, y+17, name, 10.8, text_color, 700)
-        txt(876, y+33, desc, 8.7, muted, 400)
-        txt(1257, y+26, "↗", 15, accent, 700, 0, "middle")
+    for value, y, color, weight in lines:
+        s += widget_text(22, y, value, 10.8, color, weight)
+    s += f'<rect x="22" y="204" width="91" height="15" rx="7" fill="{purple}" fill-opacity=".17"/>'
+    s += widget_text(67.5, 215, "PRACTICAL BUILDER", 7.2, purple, 700, "middle", .5)
+    s += '</svg>'
+    save_card("widget-about.svg", s)
 
-    txt(28, 907, "INNOVATE  ·  BUILD  ·  INSPIRE", 9, muted, 700, 2)
-    txt(1290, 907, "GITHUB PROFILE  /  SHIVASHARAN53", 9, muted, 700, 1.1, "end")
-    save_card("dashboard.svg", "\n".join(s))
+
+def render_widget_experience():
+    w, h = 420, 226
+    accent, cyan, gold = "#39df91", "#42c8d5", "#f3c969"
+    s = widget_start(w, h, "Experience", "INTERNSHIPS & HANDS-ON WORK", accent)
+    s += '<circle cx="28" cy="84" r="4" fill="#39df91"/>'
+    s += widget_text(43, 87, "Generative AI Engineer Intern", 10.5, "#edf4f8", 700)
+    s += widget_text(43, 105, "Pragyan AI", 9.5, accent, 700)
+    s += widget_text(43, 122, "Building practical Generative AI applications", 8.6, "#91a5b8")
+    s += '<circle cx="28" cy="150" r="4" fill="#42c8d5"/>'
+    s += widget_text(43, 153, "Big Data Analytics Intern", 10.5, "#edf4f8", 700)
+    s += widget_text(43, 171, "Krugna Technologies", 9.5, cyan, 700)
+    s += widget_text(43, 188, "Python · PySpark · SQL · Power BI", 8.6, "#91a5b8")
+    s += '</svg>'
+    save_card("widget-experience.svg", s)
+
+
+def render_widget_education():
+    w, h = 390, 226
+    accent, gold = "#f3c969", "#9a8cff"
+    s = widget_start(w, h, "Education", "ACADEMIC BACKGROUND", accent)
+    s += '<path d="M24 87H365" stroke="#34495d"/>'
+    s += widget_text(24, 82, "B.E. · Computer Science & Design", 10.2, "#edf4f8", 700)
+    s += widget_text(24, 102, "PDA College of Engineering", 9.2, "#91a5b8")
+    s += '<path d="M24 128H365" stroke="#34495d"/>'
+    s += widget_text(24, 154, "Diploma · Mechanical Engineering", 10.2, "#edf4f8", 700)
+    s += widget_text(24, 174, "Government Polytechnic, Gulbarga", 9.2, "#91a5b8")
+    s += widget_text(24, 205, "Diploma completed in 2023", 8.2, gold, 700)
+    s += '</svg>'
+    save_card("widget-education.svg", s)
+
+
+def render_widget_project(filename, title, category, description, accent):
+    w, h = 390, 145
+    s = widget_start(w, h, title, category, accent)
+    s += f'<rect x="18" y="66" width="354" height="58" rx="12" fill="#1b2a39" stroke="{accent}" stroke-opacity=".35" filter="url(#wshadow)"/>'
+    s += f'<path d="M30 67H360" stroke="{accent}" stroke-opacity=".55"/>'
+    s += widget_text(32, 91, title, 11, "#edf4f8", 700)
+    s += widget_text(32, 110, description, 8.6, "#91a5b8")
+    s += f'<path d="M340 88h17m-7 -7l7 7 -7 7" stroke="{accent}" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
+    s += '</svg>'
+    save_card(filename, s)
+
+
+def render_widget_contributions(rows):
+    w, h = 1260, 172
+    accent = "#39df91"
+    s = widget_start(w, h, "Contribution map", "YOUR GITHUB CONTRIBUTIONS · LAST 365 DAYS", accent)
+    if rows:
+        first = rows[0][0]
+        offset = (first.weekday()+1) % 7
+        for i, (day, count) in enumerate(rows):
+            col, row = (i+offset)//7, (i+offset)%7
+            x, y = 24+col*22.6, 74+row*12.5
+            color = "#1b2937" if count == 0 else ("#15533f" if count < 4 else "#17875e" if count < 10 else "#2dbd7e" if count < 22 else "#77f0b4")
+            s += f'<rect x="{x:.1f}" y="{y:.1f}" width="15" height="9" rx="2" fill="{color}"/>'
+        month_label = None
+        for i, (day, count) in enumerate(rows):
+            if day.day <= 7 and day.strftime("%b") != month_label:
+                col = (i+offset)//7
+                x = 24+col*22.6
+                s += widget_text(x, 65, day.strftime("%b").upper(), 7.5, "#91a5b8", 600)
+                month_label = day.strftime("%b")
+        s += widget_text(24, 163, "LESS", 7.5, "#91a5b8", 700)
+        for i, col in enumerate(("#1b2937", "#15533f", "#17875e", "#2dbd7e", "#77f0b4")):
+            s += f'<rect x="{65+i*16}" y="153" width="10" height="9" rx="2" fill="{col}"/>'
+        s += widget_text(155, 163, "MORE", 7.5, "#91a5b8", 700)
+    else:
+        s += widget_text(24, 100, "Contribution history will appear after the next sync.", 11, "#91a5b8")
+    s += '</svg>'
+    save_card("widget-contributions.svg", s)
+
+
+def render_widget_cards(data, rows):
+    render_widget_profile()
+    render_widget_activity(data, rows)
+    render_widget_toolkit()
+    render_widget_about()
+    render_widget_experience()
+    render_widget_education()
+    render_widget_project("widget-project-nammaclean.svg", "NammaClean AI", "COMPUTER VISION", "Waste classification with MobileNetV2", "#39df91")
+    render_widget_project("widget-project-market.svg", "Live Market Sales Analysis", "DATA ANALYTICS", "Market data analysis project", "#42c8d5")
+    render_widget_project("widget-project-voice.svg", "Document Voice Studio", "AI APPLICATION", "Document, text and voice workflows", "#9a8cff")
+    render_widget_project("widget-project-loan.svg", "SmartLoan India", "PYTHON APPLICATION", "Loan information and EMI calculations", "#f3c969")
+    render_widget_project("widget-project-campus.svg", "CampusScope", "COLLEGE DISCOVERY", "College information platform", "#42c8d5")
+    render_widget_project("widget-project-imagestudio.svg", "PragyanAI Image Studio", "IMAGE PROCESSING", "Creative image processing tools", "#9a8cff")
+    render_widget_contributions(rows)
 
 def main():
     CARDS.mkdir(parents=True, exist_ok=True)
     data = load_data()
     rows = normalized_days(data)
-    render_dashboard(data, rows)
+    render_widget_cards(data, rows)
     render_hero()
     render_about()
     render_experience_education()

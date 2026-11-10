@@ -1,23 +1,71 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Shivasharan53/Shivasharan53/main/cards/dashboard.png" width="100%" alt="Shivasharanappa | 3D Generative AI Developer Dashboard" />
+# SHIVASHARANAPPA
+<sub>GENERATIVE AI ENGINEER INTERN · PRAGYAN AI</sub>
 
 </div>
 
-<p align="center">
-  <a href="https://github.com/Shivasharan53/NammaClean-AI">NammaClean AI</a> ·
-  <a href="https://github.com/Shivasharan53/Live-Market-Sales-Analysis">Live Market Analysis</a> ·
-  <a href="https://github.com/Shivasharan53/PragyanAI_python_project_Document-Voice-Studio">Document Voice Studio</a> ·
-  <a href="https://github.com/Shivasharan53/PragyanAI_python_project_SmartLoan-India">SmartLoan India</a> ·
-  <a href="https://github.com/Shivasharan53/PragyanAI_python_project_CampusScope">CampusScope</a> ·
-  <a href="https://github.com/Shivasharan53/PragyanAI_Image-Studio-project">PragyanAI Image Studio</a>
-</p>
+<table>
+<tr>
+<td width="23%" valign="top">
+<img src="cards/widget-profile.svg" width="100%" alt="Profile card"/>
+</td>
+<td width="52%" valign="top">
+<img src="cards/widget-activity.svg" width="100%" alt="GitHub activity metrics and monthly contributions"/>
+</td>
+<td width="25%" valign="top">
+<img src="cards/widget-toolkit.svg" width="100%" alt="Core technology toolkit"/>
+</td>
+</tr>
+</table>
 
-<p align="center">
-  <a href="https://github.com/Shivasharan53">GitHub</a> ·
-  <a href="https://www.linkedin.com/in/shivasharanappa-genai/">LinkedIn</a> ·
-  <a href="mailto:shivasharanappapatil42@gmail.com">Email</a> ·
-  <a href="https://shiva-portfolio.app.orvisai.com">Portfolio</a>
-</p>
+<table>
+<tr>
+<td width="33%" valign="top">
+<img src="cards/widget-about.svg" width="100%" alt="About me"/>
+</td>
+<td width="34%" valign="top">
+<img src="cards/widget-experience.svg" width="100%" alt="Internship experience"/>
+</td>
+<td width="33%" valign="top">
+<img src="cards/widget-education.svg" width="100%" alt="Education"/>
+</td>
+</tr>
+</table>
 
-<p align="center"><sub>INNOVATE · BUILD · INSPIRE</sub></p>
+## SELECTED PROJECTS
+
+<table>
+<tr>
+<td width="33%">
+<a href="https://github.com/Shivasharan53/NammaClean-AI"><img src="cards/widget-project-nammaclean.svg" width="100%" alt="NammaClean AI"/></a>
+</td>
+<td width="33%">
+<a href="https://github.com/Shivasharan53/Live-Market-Sales-Analysis"><img src="cards/widget-project-market.svg" width="100%" alt="Live Market Sales Analysis"/></a>
+</td>
+<td width="33%">
+<a href="https://github.com/Shivasharan53/PragyanAI_python_project_Document-Voice-Studio"><img src="cards/widget-project-voice.svg" width="100%" alt="Document Voice Studio"/></a>
+</td>
+</tr>
+<tr>
+<td width="33%">
+<a href="https://github.com/Shivasharan53/PragyanAI_python_project_SmartLoan-India"><img src="cards/widget-project-loan.svg" width="100%" alt="SmartLoan India"/></a>
+</td>
+<td width="33%">
+<a href="https://github.com/Shivasharan53/PragyanAI_python_project_CampusScope"><img src="cards/widget-project-campus.svg" width="100%" alt="CampusScope"/></a>
+</td>
+<td width="33%">
+<a href="https://github.com/Shivasharan53/PragyanAI_Image-Studio-project"><img src="cards/widget-project-imagestudio.svg" width="100%" alt="PragyanAI Image Studio"/></a>
+</td>
+</tr>
+</table>
+
+<img src="cards/widget-contributions.svg" width="100%" alt="GitHub contribution map"/>
+
+<div align="center">
+
+[GitHub](https://github.com/Shivasharan53) · [LinkedIn](https://www.linkedin.com/in/shivasharanappa-genai/) · [Email](mailto:shivasharanappapatil42@gmail.com) · [Portfolio](https://shiva-portfolio.app.orvisai.com)
+
+<sub>INNOVATE · BUILD · INSPIRE</sub>
+
+</div>
