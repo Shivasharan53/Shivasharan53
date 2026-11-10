@@ -546,7 +546,6 @@ def render_dashboard(data, rows):
 
     txt(28, 907, "INNOVATE  ·  BUILD  ·  INSPIRE", 9, muted, 700, 2)
     txt(1290, 907, "GITHUB PROFILE  /  SHIVASHARAN53", 9, muted, 700, 1.1, "end")
-    s.append("</svg>")
     save_card("dashboard.svg", "\n".join(s))
 
 def main():
