@@ -410,10 +410,7 @@ def render_dashboard(data, rows):
     txt(47, 112, "PROFILE", 10, green, 700, 2)
     s.append('<circle cx="150" cy="164" r="56" fill="#253c48" stroke="url(#dashTop)" stroke-width="3" filter="url(#dashGlow)"/>')
     s.append('<circle cx="150" cy="164" r="49" fill="#1c2a3c"/>')
-    if avatar_url:
-        s.append(f'<image x="101" y="115" width="98" height="98" href="{esc(avatar_url)}" xlink:href="{esc(avatar_url)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarClip)"/>')
-    else:
-        txt(150, 173, "SP", 29, "#ffffff", 800, 1, "middle")
+    s.append('<image x="101" y="115" width="98" height="98" href="avatar.png" xlink:href="avatar.png" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarClip)"/>')
     txt(150, 245, CONFIG.get("name", "Shivasharanappa").upper(), 17, text_color, 800, .6, "middle")
     txt(150, 268, "GENERATIVE AI ENGINEER INTERN", 9.6, purple, 700, .75, "middle")
     txt(150, 291, "Pragyan AI", 12, muted, 500, .2, "middle")

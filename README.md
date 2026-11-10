@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Shivasharan53/Shivasharan53/main/cards/dashboard.svg" width="100%" alt="Shivasharanappa | 3D Generative AI Developer Dashboard" />
+<img src="https://raw.githubusercontent.com/Shivasharan53/Shivasharan53/main/cards/dashboard.png" width="100%" alt="Shivasharanappa | 3D Generative AI Developer Dashboard" />
 
 </div>
 
