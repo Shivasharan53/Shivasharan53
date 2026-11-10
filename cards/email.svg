@@ -7,7 +7,6 @@
  *,*::before,*::after { animation:none!important;transition:none!important;opacity:1!important;transform:none!important; }
 }
 
- text{font-family:ProfileEmbedded, Arial, Helvetica, sans-serif}
- .muted{fill:#b9cbc5}.mint{fill:#72c6ae}.gold{fill:#d7a84b}
- </style></defs><rect x="1" y="1" width="338" height="110" rx="19" fill="#17252b" stroke="#72c6ae" stroke-opacity=".22"/>
-<g style="opacity:0;animation:reveal 650ms cubic-bezier(.2,.7,.2,1) 1040ms forwards"><circle cx="49" cy="56" r="26" fill="#20383a" stroke="#d7a84b" stroke-opacity=".7"/><text x="49" y="62" text-anchor="middle" font-size="17" font-weight="700" class="mint">@</text><text x="91" y="49" font-size="16" font-weight="700" fill="#f0f5f1">Email</text><text x="91" y="72" font-size="10.5" class="muted">Get in touch</text><path d="M304 56h17m-7 -7l7 7 -7 7" fill="none" stroke="#d7a84b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+text{font-family:ProfileEmbedded, Arial, Helvetica, sans-serif}.muted{fill:#b9cbc5}.mint{fill:#72c6ae}.gold{fill:#d7a84b}
+@media(prefers-reduced-motion:reduce){animate,animateTransform{display:none!important}}
+</style></defs><rect x="1" y="1" width="338" height="110" rx="19" fill="#17252b" stroke="#72c6ae" stroke-opacity=".22"/><g style="opacity:0;animation:reveal 650ms cubic-bezier(.2,.7,.2,1) 1040ms forwards"><circle cx="49" cy="56" r="26" fill="#20383a" stroke="#d7a84b" stroke-opacity=".7"/><text x="49" y="62" text-anchor="middle" font-size="17" font-weight="700" class="mint">@</text><text x="91" y="49" font-size="16" font-weight="700" fill="#f0f5f1">Email</text><text x="91" y="72" font-size="10.5" class="muted">Get in touch</text><path d="M304 56h17m-7 -7l7 7 -7 7" fill="none" stroke="#d7a84b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
