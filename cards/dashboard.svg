@@ -46,7 +46,7 @@
 <text x="47" y="112" font-size="10" font-weight="700" fill="#39df91" letter-spacing="2" text-anchor="start">PROFILE</text>
 <circle cx="150" cy="164" r="56" fill="#253c48" stroke="url(#dashTop)" stroke-width="3" filter="url(#dashGlow)"/>
 <circle cx="150" cy="164" r="49" fill="#1c2a3c"/>
-<image x="101" y="115" width="98" height="98" href="https://avatars.githubusercontent.com/u/183574627?v=4" xlink:href="https://avatars.githubusercontent.com/u/183574627?v=4" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarClip)"/>
+<image x="101" y="115" width="98" height="98" href="avatar.png" xlink:href="avatar.png" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarClip)"/>
 <text x="150" y="245" font-size="17" font-weight="800" fill="#edf4f8" letter-spacing="0.6" text-anchor="middle">SHIVASHARANAPPA</text>
 <text x="150" y="268" font-size="9.6" font-weight="700" fill="#9a8cff" letter-spacing="0.75" text-anchor="middle">GENERATIVE AI ENGINEER INTERN</text>
 <text x="150" y="291" font-size="12" font-weight="500" fill="#8ea1b5" letter-spacing="0.2" text-anchor="middle">Pragyan AI</text>
@@ -60,7 +60,7 @@
 <path d="M168 391H244" stroke="#42c8d5" stroke-opacity=".42" stroke-width="1.4"/>
 <text x="94" y="407" font-size="16" font-weight="800" fill="#39df91" letter-spacing="0" text-anchor="middle">36</text>
 <text x="94" y="420" font-size="8" font-weight="700" fill="#8ea1b5" letter-spacing="0.8" text-anchor="middle">REPOSITORIES</text>
-<text x="206" y="407" font-size="16" font-weight="800" fill="#42c8d5" letter-spacing="0" text-anchor="middle">269</text>
+<text x="206" y="407" font-size="16" font-weight="800" fill="#42c8d5" letter-spacing="0" text-anchor="middle">270</text>
 <text x="206" y="420" font-size="8" font-weight="700" fill="#8ea1b5" letter-spacing="0.8" text-anchor="middle">CONTRIBUTIONS</text>
 <text x="150" y="454" font-size="8.5" font-weight="700" fill="#8ea1b5" letter-spacing="1" text-anchor="middle">GITHUB  ·  LINKEDIN  ·  EMAIL</text>
 <rect x="294" y="82" width="644" height="390" rx="19" fill="url(#dashPanel)" stroke="#42c8d5" stroke-opacity=".26" filter="url(#dashShadow)"/>
@@ -70,7 +70,7 @@
 <rect x="315" y="143" width="185" height="76" rx="13" fill="#192533" stroke="#39df91" stroke-opacity=".28"/>
 <path d="M328 144H487" stroke="#39df91" stroke-opacity=".42" stroke-width="1.4"/>
 <text x="330" y="166" font-size="8.7" font-weight="700" fill="#8ea1b5" letter-spacing="0.8" text-anchor="start">CONTRIBUTIONS</text>
-<text x="330" y="202" font-size="25" font-weight="800" fill="#39df91" letter-spacing="0" text-anchor="start">269</text>
+<text x="330" y="202" font-size="25" font-weight="800" fill="#39df91" letter-spacing="0" text-anchor="start">270</text>
 <circle cx="474" cy="181" r="8" fill="#39df91" fill-opacity=".16"/>
 <circle cx="474" cy="181" r="3.5" fill="#39df91"/>
 <rect x="516" y="143" width="185" height="76" rx="13" fill="#192533" stroke="#42c8d5" stroke-opacity=".28"/>
@@ -108,7 +108,7 @@
 <text x="734.5" y="369" font-size="9.2" font-weight="500" fill="#8ea1b5" letter-spacing="0" text-anchor="middle">Oct</text>
 <rect x="805" y="290" width="45" height="64" rx="7" fill="#253444"/>
 <rect x="805" y="329" width="45" height="25" rx="7" fill="url(#dashGreen)"/>
-<text x="827.5" y="322" font-size="8.8" font-weight="600" fill="#39df91" letter-spacing="0" text-anchor="middle">47</text>
+<text x="827.5" y="322" font-size="8.8" font-weight="600" fill="#39df91" letter-spacing="0" text-anchor="middle">48</text>
 <text x="827.5" y="369" font-size="9.2" font-weight="500" fill="#8ea1b5" letter-spacing="0" text-anchor="middle">Nov</text>
 <text x="319" y="392" font-size="9.2" font-weight="700" fill="#8ea1b5" letter-spacing="1.15" text-anchor="start">CONTRIBUTION MAP  ·  LAST 365 DAYS</text>
 <rect x="319.0" y="420.0" width="6.8" height="6.8" rx="1.8" fill="#1d2b37"/>
