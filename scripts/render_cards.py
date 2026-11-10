@@ -383,8 +383,11 @@ def render_dashboard(data, rows):
     def txt(x, y, value, size=12, color=text_color, weight=400, spacing=0, anchor="start"):
         s.append(f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{color}" letter-spacing="{spacing}" text-anchor="{anchor}">{esc(value)}</text>')
     def panel(x, y, w, h, accent=green, radius=19):
-        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="url(#dashPanel)" stroke="{accent}" stroke-opacity=".26" filter="url(#dashShadow)"/>')
-        s.append(f'<path d="M{x+radius} {y+1}H{x+w-radius}" stroke="{accent}" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>')
+        # Offset base plate creates a visible 3D extrusion beneath each glass panel.
+        s.append(f'<rect x="{x+7}" y="{y+9}" width="{w}" height="{h}" rx="{radius}" fill="#070c13" stroke="{accent}" stroke-opacity=".42"/>')
+        s.append(f'<path d="M{x+radius+8} {y+h+9}H{x+w-radius+8}" stroke="{accent}" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>')
+        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="url(#dashPanel)" stroke="{accent}" stroke-opacity=".36" filter="url(#dashShadow)"/>')
+        s.append(f'<path d="M{x+radius} {y+1}H{x+w-radius}" stroke="{accent}" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/>')
     def small_panel(x, y, w, h, accent=green):
         s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="13" fill="{panel2}" stroke="{accent}" stroke-opacity=".28"/>')
         s.append(f'<path d="M{x+13} {y+1}H{x+w-13}" stroke="{accent}" stroke-opacity=".42" stroke-width="1.4"/>')
@@ -398,12 +401,14 @@ def render_dashboard(data, rows):
 
     # Top application bar
     s.append('<rect x="24" y="18" width="1272" height="46" rx="14" fill="#101923" stroke="#263747"/>')
-    s.append('<circle cx="49" cy="41" r="13" fill="url(#dashTop)"/>')
-    txt(49, 45.5, "S", 13, "#07131a", 800, 0, "middle")
+    # Small isometric cube mark in the header.
+    s.append('<path d="M49 25L64 34L49 43L34 34Z" fill="#b6ffe0" stroke="#e8fff4" stroke-width="1"/>')
+    s.append('<path d="M34 34L49 43V59L34 50Z" fill="#16885f" stroke="#70f0b4" stroke-width="1"/>')
+    s.append('<path d="M49 43L64 34V50L49 59Z" fill="#277ba1" stroke="#93ebff" stroke-width="1"/>')
     txt(72, 45, "SHIVA  /  DEVELOPER DASHBOARD", 11, text_color, 700, 1.7)
     s.append('<circle cx="1134" cy="41" r="4" fill="#39df91" filter="url(#dashGlow)"/>')
     txt(1147, 45, "PROFILE OVERVIEW", 10, muted, 700, 1.3)
-    txt(1270, 45, "2026", 10, purple, 700, 1, "end")
+    txt(1270, 45, "3D VIEW", 9, purple, 700, 1.1, "end")
 
     # Left profile panel
     panel(24, 82, 252, 390, green)
