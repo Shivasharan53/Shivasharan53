@@ -48,5 +48,31 @@
       "MACHINE LEARNING",
       "COMPUTER VISION"
     ]
+  },
+  "experience_education": {
+    "experience": [
+      {
+        "title": "Generative AI Engineer Intern",
+        "organization": "Pragyan AI",
+        "details": "Building practical Generative AI applications"
+      },
+      {
+        "title": "Big Data Analytics Intern",
+        "organization": "Krugna Technologies",
+        "details": "3-month VTU-registered internship · Python, PySpark, SQL, Power BI"
+      }
+    ],
+    "education": [
+      {
+        "title": "B.E. · Computer Science and Design",
+        "organization": "PDA College of Engineering",
+        "details": "Degree completed"
+      },
+      {
+        "title": "Diploma · Mechanical Engineering",
+        "organization": "Government Polytechnic, Gulbarga",
+        "details": "Completed in 2023"
+      }
+    ]
   }
 }

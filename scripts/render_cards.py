@@ -204,6 +204,36 @@ def render_about():
     s += '</g>'
     save_card("about.svg", s)
 
+
+def render_experience_education():
+    """Render experience and education in two matching profile panels."""
+    h = 370
+    section = CONFIG.get("experience_education", {})
+    experiences = section.get("experience", [])
+    education = section.get("education", [])
+    s = svg_start(h, "Experience and education") + surface(h, 1420)
+    s += f'<g {delay_style(1520)}>'
+    s += f'<text x="38" y="46" font-size="12" letter-spacing="2.8" class="gold">MY JOURNEY</text>'
+    s += f'<text x="38" y="83" font-size="25" font-weight="700" fill="{TEXT}">Experience &amp; Education</text>'
+    s += f'<rect x="34" y="108" width="452" height="226" rx="17" fill="{PANEL_ALT}" fill-opacity=".72" stroke="{MINT}" stroke-opacity=".24"/>'
+    s += f'<rect x="514" y="108" width="452" height="226" rx="17" fill="{PANEL_ALT}" fill-opacity=".72" stroke="{GOLD}" stroke-opacity=".24"/>'
+    s += f'<text x="58" y="142" font-size="12" letter-spacing="1.8" class="mint">EXPERIENCE</text>'
+    s += f'<text x="538" y="142" font-size="12" letter-spacing="1.8" class="gold">EDUCATION</text>'
+    for index, item in enumerate(experiences[:2]):
+        y = 181 + index * 92
+        s += f'<circle cx="63" cy="{y-5}" r="5" fill="{MINT}"/>'
+        s += f'<text x="81" y="{y}" font-size="15" font-weight="700" fill="{TEXT}">{esc(item.get("title", ""))}</text>'
+        s += f'<text x="81" y="{y+22}" font-size="12.5" class="mint">{esc(item.get("organization", ""))}</text>'
+        s += f'<text x="81" y="{y+43}" font-size="11.5" class="muted">{esc(item.get("details", ""))}</text>'
+    for index, item in enumerate(education[:2]):
+        y = 181 + index * 92
+        s += f'<circle cx="543" cy="{y-5}" r="5" fill="{GOLD}"/>'
+        s += f'<text x="561" y="{y}" font-size="15" font-weight="700" fill="{TEXT}">{esc(item.get("title", ""))}</text>'
+        s += f'<text x="561" y="{y+22}" font-size="12.5" class="gold">{esc(item.get("organization", ""))}</text>'
+        s += f'<text x="561" y="{y+43}" font-size="11.5" class="muted">{esc(item.get("details", ""))}</text>'
+    s += '</g>'
+    save_card("experience-education.svg", s)
+
 def render_activity(data, rows):
     h = 400
     total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
@@ -284,6 +314,7 @@ def main():
     rows = normalized_days(data)
     render_hero()
     render_about()
+    render_experience_education()
     render_link_tile("github", "GitHub", "Explore my code and projects", 700)
     render_link_tile("linkedin", "LinkedIn", "Connect and follow my journey", 820)
     render_link_tile("email", "Email", "Get in touch", 940)
