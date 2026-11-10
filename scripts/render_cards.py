@@ -407,8 +407,7 @@ def render_dashboard(data, rows):
     s.append('<path d="M49 43L64 34V50L49 59Z" fill="#277ba1" stroke="#93ebff" stroke-width="1"/>')
     txt(72, 45, "SHIVA  /  DEVELOPER DASHBOARD", 11, text_color, 700, 1.7)
     s.append('<circle cx="1134" cy="41" r="4" fill="#39df91" filter="url(#dashGlow)"/>')
-    txt(1147, 45, "PROFILE OVERVIEW", 10, muted, 700, 1.3)
-    txt(1270, 45, "3D VIEW", 9, purple, 700, 1.1, "end")
+    txt(1147, 45, "3D DEVELOPER PROFILE", 9.5, muted, 700, 1.1)
 
     # Left profile panel
     panel(24, 82, 252, 390, green)
