@@ -7,10 +7,16 @@
  <linearGradient id="wglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset="1" stop-color="#ffffff" stop-opacity=".025"/></linearGradient>
  <filter id="wshadow" x="-25%" y="-25%" width="160%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/><feOffset dy="6" dx="1" result="o"/><feComponentTransfer in="o" result="s"><feFuncA type="linear" slope=".48"/></feComponentTransfer><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
  <filter id="wglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <pattern id="wgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#f3c969" stroke-opacity=".045" stroke-width=".8"/></pattern>
 </defs>
-<rect x="0.5" y="0.5" width="389" height="225" rx="20" fill="url(#wbg)" stroke="#405366" stroke-opacity=".75"/>
+<style>text{font-family:Inter,Arial,Helvetica,sans-serif}</style>
+<!-- Offset shadow plate: gives each panel a real raised dashboard edge. -->
+<rect x="5" y="8" width="380" height="214" rx="20" fill="#050a12" stroke="#f3c969" stroke-opacity=".52"/>
+<rect x="0.5" y="0.5" width="389" height="225" rx="20" fill="url(#wbg)" stroke="#60758a" stroke-opacity=".72" filter="url(#wshadow)"/>
 <rect x="1" y="1" width="388" height="224" rx="19" fill="url(#wglass)"/>
-<path d="M22 2H368" stroke="url(#wtop)" stroke-width="2.5" stroke-linecap="round" opacity=".95"/>
+<rect x="1" y="1" width="388" height="224" rx="19" fill="url(#wgrid)"/>
+<path d="M22 2H368" stroke="url(#wtop)" stroke-width="2.8" stroke-linecap="round" opacity=".98"/>
+<path d="M4 24V202" stroke="#ffffff" stroke-opacity=".08" stroke-width="1"/>
 <text x="22" y="31" font-size="10.5" font-weight="700" fill="#f3c969" text-anchor="start" letter-spacing="1.5">EDUCATION</text>
 <text x="22" y="49" font-size="9.5" font-weight="400" fill="#91a5b8" text-anchor="start" letter-spacing="0">ACADEMIC BACKGROUND</text>
 <path d="M24 87H365" stroke="#34495d"/><text x="24" y="82" font-size="10.2" font-weight="700" fill="#edf4f8" text-anchor="start" letter-spacing="0">B.E. · Computer Science &amp; Design</text><text x="24" y="102" font-size="9.2" font-weight="400" fill="#91a5b8" text-anchor="start" letter-spacing="0">PDA College of Engineering</text><path d="M24 128H365" stroke="#34495d"/><text x="24" y="154" font-size="10.2" font-weight="700" fill="#edf4f8" text-anchor="start" letter-spacing="0">Diploma · Mechanical Engineering</text><text x="24" y="174" font-size="9.2" font-weight="400" fill="#91a5b8" text-anchor="start" letter-spacing="0">Government Polytechnic, Gulbarga</text><text x="24" y="205" font-size="8.2" font-weight="700" fill="#9a8cff" text-anchor="start" letter-spacing="0">Diploma completed in 2023</text></svg>
