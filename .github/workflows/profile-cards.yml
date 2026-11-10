@@ -1,0 +1,124 @@
+name: Refresh animated profile cards
+
+on:
+  push:
+    branches:
+      - main
+      - animated-profile-cards
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install font subsetting tool and Arial-compatible font
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-liberation2
+          python -m pip install --quiet fonttools
+
+      - name: Fetch contribution history
+        env:
+          # The default GITHUB_TOKEN works for this public contribution query.
+          # PROFILE_TOKEN may be set as an optional override if your account needs it.
+          GH_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+          from datetime import date, timedelta
+
+          username = "Shivasharan53"
+          end = date.today()
+          start = end - timedelta(days=364)
+
+          query = """
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+              contributionsCollection(from: $from, to: $to) {
+                contributionCalendar {
+                  totalContributions
+                  weeks { contributionDays { date contributionCount } }
+                }
+              }
+            }
+          }
+          """
+          payload = {
+              "query": query,
+              "variables": {
+                  "login": username,
+                  "from": start.isoformat() + "T00:00:00Z",
+                  "to": end.isoformat() + "T23:59:59Z",
+              },
+          }
+          request = urllib.request.Request(
+              "https://api.github.com/graphql",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                  "Content-Type": "application/json",
+                  "User-Agent": "profile-card-refresh",
+              },
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  result = json.load(response)
+          except urllib.error.HTTPError as exc:
+              details = exc.read().decode("utf-8", "replace")
+              raise SystemExit(
+                  "GitHub GraphQL request failed. Add a PROFILE_TOKEN secret "
+                  "with read:user permission. Details: " + details
+              )
+
+          if result.get("errors"):
+              raise SystemExit(
+                  "Contribution query failed. Add PROFILE_TOKEN with read:user "
+                  "permission. Details: " + json.dumps(result["errors"])
+              )
+
+          calendar = result["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+          days = [
+              {"date": day["date"], "count": day["contributionCount"]}
+              for week in calendar["weeks"]
+              for day in week["contributionDays"]
+              if start.isoformat() <= day["date"] <= end.isoformat()
+          ]
+          data = {
+              "as_of": end.isoformat(),
+              "total_contributions": sum(item["count"] for item in days),
+              "days": days,
+          }
+          os.makedirs("data", exist_ok=True)
+          with open("data/contributions.json", "w", encoding="utf-8") as file:
+              json.dump(data, file, indent=2)
+              file.write("\n")
+          print(f"Saved {len(days)} daily contribution records.")
+          PY
+
+      - name: Render SVG cards
+        run: python scripts/render_cards.py
+
+      - name: Commit refreshed contribution data and cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/contributions.json cards/
+          git diff --cached --quiet || git commit -m "chore: refresh animated profile cards"
+          git push
+
