@@ -175,6 +175,35 @@ def calculate_metrics(rows):
         _, month = map(int, key.split("-"))
         months.append((calendar.month_abbr[month], value))
     return total, active, busiest, streak, months, busiest_count
+
+def render_about():
+    """Render the profile's About Me card in the existing brand style."""
+    h = 238
+    about = CONFIG.get("about", {})
+    heading = about.get("heading", "Curious mind. Practical builder.")
+    paragraphs = about.get("paragraphs", [
+        "I'm a Computer Science and Design graduate from PDA College of Engineering.",
+        "Currently a Generative AI Engineer Intern at Pragyan AI.",
+        "I explore Generative AI, LLMs, Python, machine learning and computer vision.",
+        "I enjoy learning by building practical applications and solving real problems.",
+    ])
+    focus = about.get("focus", ["GENERATIVE AI", "MACHINE LEARNING", "COMPUTER VISION"])
+    s = svg_start(h, "About Shivasharanappa")
+    s += surface(h, 980)
+    s += f'<g {delay_style(1080)}>'
+    s += f'<text x="38" y="45" font-size="12" letter-spacing="2.8" class="gold">ABOUT ME</text>'
+    s += f'<text x="38" y="83" font-size="25" font-weight="700" fill="{TEXT}">{esc(heading)}</text>'
+    for index, line in enumerate(paragraphs[:4]):
+        s += f'<text x="38" y="{123 + index*27}" font-size="14.5" class="muted" {delay_style(1160 + index*100)}>{esc(line)}</text>'
+    s += f'<rect x="728" y="52" width="232" height="145" rx="16" fill="{PANEL_ALT}" stroke="{MINT}" stroke-opacity=".3"/>'
+    s += f'<text x="750" y="82" font-size="11" letter-spacing="1.8" class="gold">AREAS I EXPLORE</text>'
+    for index, label in enumerate(focus[:3]):
+        y = 112 + index*27
+        s += f'<circle cx="754" cy="{y-4}" r="4" fill="{MINT}"/>'
+        s += f'<text x="769" y="{y}" font-size="12.5" fill="{TEXT}">{esc(label)}</text>'
+    s += '</g>'
+    save_card("about.svg", s)
+
 def render_activity(data, rows):
     h = 400
     total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
@@ -254,6 +283,7 @@ def main():
     data = load_data()
     rows = normalized_days(data)
     render_hero()
+    render_about()
     render_link_tile("github", "GitHub", "Explore my code and projects", 700)
     render_link_tile("linkedin", "LinkedIn", "Connect and follow my journey", 820)
     render_link_tile("email", "Email", "Get in touch", 940)
