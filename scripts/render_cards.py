@@ -184,10 +184,10 @@ def render_activity(data, rows):
     s += f'<text x="38" y="85" font-size="25" font-weight="700" fill="{TEXT}">Small steps. Consistent progress.</text>'
     if rows:
         stats = [("CONTRIBUTIONS", f"{total:,}", MINT), ("ACTIVE DAYS", f"{active:,}", MINT),
-                 ("CURRENT STREAK", f"{streak} days", MINT), ("BUSIEST DAY · COUNT", busiest, GOLD)]
+                 ("CURRENT STREAK", f"{streak} day" if streak == 1 else f"{streak} days", MINT), ("BUSIEST DAY · COUNT", busiest, GOLD)]
     else:
         stats = [("CONTRIBUTIONS", "—", MINT), ("ACTIVE DAYS", "—", MINT),
-                 ("CURRENT STREAK", "—", MINT), ("BUSIEST WEEKDAY", "—", GOLD)]
+                 ("CURRENT STREAK", "—", MINT), ("BUSIEST DAY · COUNT", "—", GOLD)]
     for i, (label, value, accent) in enumerate(stats):
         x = 38 + i * 236
         s += f'<rect x="{x}" y="111" width="218" height="82" rx="14" fill="{PANEL_ALT}"/>'
