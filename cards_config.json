@@ -1,0 +1,38 @@
+{
+  "name": "Shivasharanappa",
+  "role": "Generative AI Engineer Intern · Pragyan AI",
+  "tagline": "Building practical AI applications with Python, LLMs and machine learning.",
+  "font_family": "Arial, Helvetica, sans-serif",
+  "portrait_url": "",
+  "colors": {
+    "bg": "#111b24",
+    "panel": "#17252b",
+    "panel2": "#20383a",
+    "text": "#f0f5f1",
+    "muted": "#b9cbc5",
+    "mint": "#72c6ae",
+    "gold": "#d7a84b"
+  },
+  "links": {
+    "github": "https://github.com/Shivasharan53",
+    "linkedin": "https://www.linkedin.com/in/shivasharanappa-genai/",
+    "email": "mailto:shivasharanappapatil42@gmail.com"
+  },
+  "featured_repos": [
+    {
+      "name": "Speech-to-Text Transcription",
+      "description": "Convert speech into text with a Python-based transcription project.",
+      "url": "https://github.com/Shivasharan53/Speech-to-text-transcription"
+    },
+    {
+      "name": "Fruit Image Classifier",
+      "description": "Explore image classification through a fruit recognition project.",
+      "url": "https://github.com/Shivasharan53/Image-classifier-for-fruits"
+    },
+    {
+      "name": "Python Programs",
+      "description": "A collection of Python practice, fundamentals and learning programs.",
+      "url": "https://github.com/Shivasharan53/Python_program"
+    }
+  ]
+}
