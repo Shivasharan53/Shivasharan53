@@ -562,21 +562,7 @@ def main():
     data = load_data()
     rows = normalized_days(data)
     render_widget_cards(data, rows)
-    render_hero()
-    render_about()
-    render_experience_education()
-    render_learning()
-    render_link_tile("github", "GitHub", "Explore my code and projects", 700)
-    render_link_tile("linkedin", "LinkedIn", "Connect and follow my journey", 820)
-    render_link_tile("email", "Email", "Get in touch", 940)
-    render_activity(data, rows)
-    for i, (project, filename) in enumerate(zip(
-        CONFIG["featured_repos"], ["repo-speech.svg", "repo-fruit.svg", "repo-python.svg"]
-    )):
-        render_project(project, filename, 2150 + i * 260)
-    render_contributions(rows)
-    print(f"Rendered {len(list(CARDS.glob('*.svg')))} SVG cards ({'STATIC' if STATIC else 'animated'} mode).")
+    print(f"Rendered {len(list(CARDS.glob('widget-*.svg')))} independent dashboard widgets.")
 
 if __name__ == "__main__":
     main()
-
