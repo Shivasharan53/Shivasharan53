@@ -119,18 +119,24 @@ def render_hero():
               f'fill="url(#brand)"/><circle cx="817" cy="154" r="7" fill="{BG}"/>')
     save_card("hero.svg", s)
 
-def render_link_tile(key, title, subtitle, delay):
-    h = 150
-    s = svg_start(h, title) + surface(h, delay)
-    s += f'<g {delay_style(delay + 100)}>'
-    s += f'<circle cx="81" cy="75" r="32" fill="{PANEL_ALT}" stroke="{GOLD}" stroke-opacity=".7"/>'
-    label = {"github": "GH", "linkedin": "in", "email": "@"}[key]
-    s += f'<text x="81" y="83" text-anchor="middle" font-size="22" font-weight="700" class="mint">{label}</text>'
-    s += f'<text x="137" y="68" font-size="21" font-weight="700" fill="{TEXT}">{esc(title)}</text>'
-    s += f'<text x="137" y="97" font-size="14" class="muted">{esc(subtitle)}</text>'
-    s += f'<path d="M932 75h18m-7 -7l7 7 -7 7" fill="none" stroke="{GOLD}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>'
-    save_card(f"{key}.svg", s)
 
+def render_link_tile(key, title, subtitle, delay):
+    # Compact canvas keeps text legible at README width=32.5%.
+    h, w = 112, 340
+    style = "" if STATIC else CSS
+    s = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{esc(title)}">
+<title>{esc(title)}</title><defs><style>{EMBEDDED_FONT}{style}
+text{{font-family:{ACTIVE_FONT}}}.muted{{fill:{MUTED}}}.mint{{fill:{MINT}}}.gold{{fill:{GOLD}}}
+@media(prefers-reduced-motion:reduce){{animate,animateTransform{{display:none!important}}}}
+</style></defs><rect x="1" y="1" width="338" height="110" rx="19" fill="{PANEL}" stroke="{MINT}" stroke-opacity=".22"/>"""
+    s += f'<g {delay_style(delay + 100)}>'
+    s += f'<circle cx="49" cy="56" r="26" fill="{PANEL_ALT}" stroke="{GOLD}" stroke-opacity=".7"/>'
+    label = {"github": "GH", "linkedin": "in", "email": "@"}[key]
+    s += f'<text x="49" y="62" text-anchor="middle" font-size="17" font-weight="700" class="mint">{label}</text>'
+    s += f'<text x="91" y="49" font-size="16" font-weight="700" fill="{TEXT}">{esc(title)}</text>'
+    s += f'<text x="91" y="72" font-size="10.5" class="muted">{esc(subtitle)}</text>'
+    s += f'<path d="M304 56h17m-7 -7l7 7 -7 7" fill="none" stroke="{GOLD}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>'
+    save_card(f"{key}.svg", s)
 def load_data():
     if not DATA_FILE.exists():
         return {"days": [], "as_of": "Awaiting first sync"}
@@ -146,17 +152,18 @@ def normalized_days(data):
                 rows.append((date.fromisoformat(item["date"]), int(item["contributionCount"])))
     return sorted(rows, key=lambda pair: pair[0])
 
+
 def calculate_metrics(rows):
     if not rows:
-        return 0, 0, "—", 0, []
+        return 0, 0, "—", 0, [], 0
     counts = {day: count for day, count in rows}
     total = sum(counts.values())
     active = sum(count > 0 for count in counts.values())
-    weekdays, monthly = Counter(), Counter()
+    monthly = Counter()
     for day, count in rows:
-        weekdays[day.strftime("%A")] += count
         monthly[day.strftime("%Y-%m")] += count
-    busiest = weekdays.most_common(1)[0][0] if weekdays else "—"
+    busiest_date, busiest_count = max(rows, key=lambda item: (item[1], item[0]))
+    busiest = f"{busiest_date.strftime('%d %b')} · {busiest_count}" if busiest_count else "—"
     today = date.today()
     cursor = today if counts.get(today, 0) else today - timedelta(days=1)
     streak = 0
@@ -165,20 +172,19 @@ def calculate_metrics(rows):
         cursor -= timedelta(days=1)
     months = []
     for key, value in sorted(monthly.items())[-12:]:
-        year, month = map(int, key.split("-"))
+        _, month = map(int, key.split("-"))
         months.append((calendar.month_abbr[month], value))
-    return total, active, busiest, streak, months
-
+    return total, active, busiest, streak, months, busiest_count
 def render_activity(data, rows):
     h = 400
-    total, active, busiest, streak, months = calculate_metrics(rows)
+    total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
     s = svg_start(h, "GitHub activity summary") + surface(h, 1120)
     s += f'<g {delay_style(1220)}>'
     s += f'<text x="38" y="48" font-size="13" letter-spacing="3" class="gold">GITHUB ACTIVITY</text>'
     s += f'<text x="38" y="85" font-size="25" font-weight="700" fill="{TEXT}">Small steps. Consistent progress.</text>'
     if rows:
         stats = [("CONTRIBUTIONS", f"{total:,}", MINT), ("ACTIVE DAYS", f"{active:,}", MINT),
-                 ("CURRENT STREAK", f"{streak} days", MINT), ("BUSIEST WEEKDAY", busiest, GOLD)]
+                 ("CURRENT STREAK", f"{streak} days", MINT), ("BUSIEST DAY · COUNT", busiest, GOLD)]
     else:
         stats = [("CONTRIBUTIONS", "—", MINT), ("ACTIVE DAYS", "—", MINT),
                  ("CURRENT STREAK", "—", MINT), ("BUSIEST WEEKDAY", "—", GOLD)]
