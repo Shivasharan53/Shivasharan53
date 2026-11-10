@@ -334,10 +334,226 @@ def render_contributions(rows):
     s += "</g>"
     save_card("contributions.svg", s)
 
+
+def render_dashboard(data, rows):
+    """Render a single, compact developer dashboard for the profile README."""
+    width, height = 1320, 930
+    total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
+    repo_count = int(CONFIG.get("repo_count", 0))
+    avatar_url = CONFIG.get("avatar_url", "").strip()
+    bg, panel, panel2 = "#0b1017", "#131c27", "#192533"
+    text_color, muted = "#edf4f8", "#8ea1b5"
+    green, cyan, purple, gold = "#39df91", "#42c8d5", "#9a8cff", "#f3c969"
+    s = [f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Shivasharanappa developer dashboard">
+<title>Shivasharanappa | Generative AI Engineer Dashboard</title>
+<defs>
+ <linearGradient id="dashBg" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#080d14"/><stop offset="1" stop-color="#111b2a"/>
+ </linearGradient>
+ <linearGradient id="dashPanel" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#1a2735"/><stop offset="1" stop-color="#111a25"/>
+ </linearGradient>
+ <linearGradient id="dashTop" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#39df91"/><stop offset=".55" stop-color="#42c8d5"/><stop offset="1" stop-color="#9a8cff"/>
+ </linearGradient>
+ <linearGradient id="dashGreen" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#65f3ae"/><stop offset="1" stop-color="#138b62"/>
+ </linearGradient>
+ <filter id="dashShadow" x="-25%" y="-25%" width="155%" height="175%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/>
+  <feOffset in="blur" dx="0" dy="7" result="off"/>
+  <feComponentTransfer in="off" result="shadow"><feFuncA type="linear" slope=".38"/></feComponentTransfer>
+  <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+ </filter>
+ <filter id="dashGlow" x="-80%" y="-80%" width="260%" height="260%">
+  <feGaussianBlur stdDeviation="9" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+ </filter>
+ <pattern id="dashGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+  <path d="M26 0H0V26" fill="none" stroke="#9bb6cb" stroke-opacity=".035" stroke-width="1"/>
+ </pattern>
+ <clipPath id="avatarClip"><circle cx="150" cy="164" r="49"/></clipPath>
+ <style>text{font-family:Inter,Arial,Helvetica,sans-serif}.muted{fill:#8ea1b5}</style>
+</defs>
+<rect width="1320" height="930" rx="28" fill="url(#dashBg)"/>
+<rect width="1320" height="930" rx="28" fill="url(#dashGrid)"/>
+<circle cx="1110" cy="110" r="170" fill="#2e9f83" opacity=".055" filter="url(#dashGlow)"/>
+<circle cx="180" cy="765" r="150" fill="#6250b4" opacity=".06" filter="url(#dashGlow)"/>
+''']
+    def txt(x, y, value, size=12, color=text_color, weight=400, spacing=0, anchor="start"):
+        s.append(f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{color}" letter-spacing="{spacing}" text-anchor="{anchor}">{esc(value)}</text>')
+    def panel(x, y, w, h, accent=green, radius=19):
+        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="url(#dashPanel)" stroke="{accent}" stroke-opacity=".26" filter="url(#dashShadow)"/>')
+        s.append(f'<path d="M{x+radius} {y+1}H{x+w-radius}" stroke="{accent}" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>')
+    def small_panel(x, y, w, h, accent=green):
+        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="13" fill="{panel2}" stroke="{accent}" stroke-opacity=".28"/>')
+        s.append(f'<path d="M{x+13} {y+1}H{x+w-13}" stroke="{accent}" stroke-opacity=".42" stroke-width="1.4"/>')
+    def chip(x, y, label, color=green, w=125):
+        s.append(f'<rect x="{x}" y="{y}" width="{w}" height="25" rx="12" fill="{color}" fill-opacity=".10" stroke="{color}" stroke-opacity=".45"/>')
+        txt(x+w/2, y+16.5, label, 10.3, color, 700, .25, "middle")
+    def section_title(x, y, label, subtitle=""):
+        txt(x, y, label, 11, green, 700, 2.1)
+        if subtitle:
+            txt(x, y+18, subtitle, 10, muted, 400, .2)
+
+    # Top application bar
+    s.append('<rect x="24" y="18" width="1272" height="46" rx="14" fill="#101923" stroke="#263747"/>')
+    s.append('<circle cx="49" cy="41" r="13" fill="url(#dashTop)"/>')
+    txt(49, 45.5, "S", 13, "#07131a", 800, 0, "middle")
+    txt(72, 45, "SHIVA  /  DEVELOPER DASHBOARD", 11, text_color, 700, 1.7)
+    s.append('<circle cx="1134" cy="41" r="4" fill="#39df91" filter="url(#dashGlow)"/>')
+    txt(1147, 45, "PROFILE OVERVIEW", 10, muted, 700, 1.3)
+    txt(1270, 45, "2026", 10, purple, 700, 1, "end")
+
+    # Left profile panel
+    panel(24, 82, 252, 390, green)
+    txt(47, 112, "PROFILE", 10, green, 700, 2)
+    s.append('<circle cx="150" cy="164" r="56" fill="#253c48" stroke="url(#dashTop)" stroke-width="3" filter="url(#dashGlow)"/>')
+    s.append('<circle cx="150" cy="164" r="49" fill="#1c2a3c"/>')
+    if avatar_url:
+        s.append(f'<image x="101" y="115" width="98" height="98" href="{esc(avatar_url)}" xlink:href="{esc(avatar_url)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarClip)"/>')
+    else:
+        txt(150, 173, "SP", 29, "#ffffff", 800, 1, "middle")
+    txt(150, 245, CONFIG.get("name", "Shivasharanappa").upper(), 17, text_color, 800, .6, "middle")
+    txt(150, 268, "GENERATIVE AI ENGINEER INTERN", 9.6, purple, 700, .75, "middle")
+    txt(150, 291, "Pragyan AI", 12, muted, 500, .2, "middle")
+    s.append('<path d="M47 310H253" stroke="#344454"/>')
+    txt(48, 334, "EDUCATION", 9.5, gold, 700, 1.4)
+    txt(48, 354, "B.E. · Computer Science & Design", 10.5, text_color, 600)
+    txt(48, 372, "PDA College of Engineering", 10, muted, 400)
+    small_panel(43, 390, 102, 40, green)
+    small_panel(155, 390, 102, 40, cyan)
+    txt(94, 407, str(repo_count), 16, green, 800, 0, "middle")
+    txt(94, 420, "REPOSITORIES", 8, muted, 700, .8, "middle")
+    txt(206, 407, f"{total:,}", 16, cyan, 800, 0, "middle")
+    txt(206, 420, "CONTRIBUTIONS", 8, muted, 700, .8, "middle")
+    txt(150, 454, "GITHUB  ·  LINKEDIN  ·  EMAIL", 8.5, muted, 700, 1, "middle")
+
+    # Center activity and metrics
+    panel(294, 82, 644, 390, cyan)
+    section_title(318, 111, "GITHUB ACTIVITY", "A snapshot of the last 365 days")
+    metric_data = [
+        ("CONTRIBUTIONS", f"{total:,}", green),
+        ("ACTIVE DAYS", str(active), cyan),
+        ("PUBLIC REPOS", str(repo_count), purple),
+    ]
+    for i, (label, value, accent) in enumerate(metric_data):
+        x = 315 + i*201
+        small_panel(x, 143, 185, 76, accent)
+        txt(x+15, 166, label, 8.7, muted, 700, .8)
+        txt(x+15, 202, value, 25, accent, 800)
+        s.append(f'<circle cx="{x+159}" cy="181" r="8" fill="{accent}" fill-opacity=".16"/>')
+        s.append(f'<circle cx="{x+159}" cy="181" r="3.5" fill="{accent}"/>')
+
+    txt(319, 250, "MONTHLY CONTRIBUTIONS", 9.5, muted, 700, 1.3)
+    month_counts = Counter()
+    for day, count in rows:
+        month_counts[day.strftime("%Y-%m")] += count
+    month_keys = sorted(month_counts)[-6:]
+    if not month_keys:
+        month_keys = [date.today().strftime("%Y-%m")]
+        month_counts[month_keys[0]] = 0
+    max_month = max([month_counts[k] for k in month_keys] + [1])
+    baseline = 354
+    for i, key in enumerate(month_keys):
+        x = 340 + i*93
+        value = month_counts[key]
+        bar_h = max(3, round(63*value/max_month)) if value else 3
+        s.append(f'<rect x="{x}" y="{baseline-64}" width="45" height="64" rx="7" fill="#253444"/>')
+        s.append(f'<rect x="{x}" y="{baseline-bar_h}" width="45" height="{bar_h}" rx="7" fill="url(#dashGreen)"/>')
+        txt(x+22.5, baseline-bar_h-7, str(value), 8.8, green if value else muted, 600, 0, "middle")
+        mlabel = date(int(key[:4]), int(key[5:7]), 1).strftime("%b")
+        txt(x+22.5, baseline+15, mlabel, 9.2, muted, 500, 0, "middle")
+
+    txt(319, 392, "CONTRIBUTION MAP  ·  LAST 365 DAYS", 9.2, muted, 700, 1.15)
+    if rows:
+        first = rows[0][0]
+        offset = (first.weekday()+1) % 7
+        for i, (day, count) in enumerate(rows):
+            col, row = (i+offset)//7, (i+offset)%7
+            x, y = 319 + col*9.1, 402 + row*9
+            color = "#1d2b37" if count == 0 else ("#145c48" if count < 4 else "#17845b" if count < 10 else "#29b976" if count < 22 else "#65edaa")
+            s.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="6.8" height="6.8" rx="1.8" fill="{color}"/>')
+    txt(319, 465, f"Updated {data.get('as_of', 'daily sync')}  ·  {active} active days", 8.6, muted, 400)
+
+    # Right stack panel
+    panel(956, 82, 340, 390, purple)
+    section_title(980, 111, "CORE TOOLKIT", "Technologies used across projects")
+    tools = [
+        ("PYTHON", "SQL"), ("PYSPARK", "POWER BI"),
+        ("LANGCHAIN", "FAISS"), ("STREAMLIT", "FASTAPI"),
+        ("PANDAS", "NUMPY"), ("GROQ", "HUGGING FACE"),
+    ]
+    for i, pair in enumerate(tools):
+        yy = 151 + i*42
+        chip(980, yy, pair[0], green if i%2==0 else cyan, 137)
+        chip(1137, yy, pair[1], purple if i%2==0 else gold, 137)
+    s.append('<path d="M980 414H1272" stroke="#344454"/>')
+    txt(980, 438, "FOCUS", 9, gold, 700, 1.4)
+    txt(1030, 438, "LLMs  ·  RAG  ·  ML  ·  COMPUTER VISION", 9.2, muted, 600, .1)
+
+    # About panel
+    panel(24, 493, 388, 382, purple)
+    section_title(48, 524, "ABOUT ME", "Curious mind. Practical builder.")
+    txt(48, 580, "Computer Science & Design graduate", 13, text_color, 700)
+    txt(48, 603, "from PDA College of Engineering.", 12, muted, 400)
+    txt(48, 642, "Currently a Generative AI Engineer", 12, text_color, 600)
+    txt(48, 663, "Intern at Pragyan AI.", 12, muted, 400)
+    txt(48, 702, "I enjoy building useful applications", 11.5, muted, 400)
+    txt(48, 722, "across LLMs, data and computer vision.", 11.5, muted, 400)
+    chip(48, 765, "GENAI", green, 86)
+    chip(146, 765, "DATA", cyan, 86)
+    chip(244, 765, "COMPUTER VISION", purple, 145)
+
+    # Experience and education panel
+    panel(426, 493, 400, 382, gold)
+    section_title(450, 524, "EXPERIENCE & EDUCATION", "Learning through practical work")
+    s.append('<circle cx="456" cy="566" r="4" fill="#39df91"/>')
+    txt(472, 570, "Generative AI Engineer Intern", 12, text_color, 700)
+    txt(472, 591, "Pragyan AI", 10.5, green, 700)
+    txt(472, 609, "GenAI applications · LLMs · Python", 9.5, muted, 400)
+    s.append('<circle cx="456" cy="638" r="4" fill="#42c8d5"/>')
+    txt(472, 642, "Big Data Analytics Intern", 12, text_color, 700)
+    txt(472, 663, "Krugna Technologies", 10.5, cyan, 700)
+    txt(472, 681, "Python · PySpark · SQL · Power BI", 9.5, muted, 400)
+    s.append('<path d="M450 704H801" stroke="#344454"/>')
+    txt(450, 731, "EDUCATION", 9.5, gold, 700, 1.6)
+    txt(450, 754, "B.E. · Computer Science & Design", 10.5, text_color, 600)
+    txt(450, 772, "PDA College of Engineering", 9.5, muted, 400)
+    txt(450, 806, "Diploma · Mechanical Engineering", 10.5, text_color, 600)
+    txt(450, 824, "Government Polytechnic, Gulbarga", 9.5, muted, 400)
+    txt(450, 853, "Degree completed  ·  Diploma completed in 2023", 8.2, muted, 400)
+
+    # Project showcase panel
+    panel(840, 493, 456, 382, green)
+    section_title(864, 524, "SELECTED PROJECTS", "A few things I have built")
+    projects = [
+        ("NammaClean AI", "Waste classification with MobileNetV2"),
+        ("Live Market Sales Analysis", "Market data analysis and forecasting"),
+        ("Document Voice Studio", "Document-to-text and voice workflows"),
+        ("SmartLoan India", "Loan discovery and EMI calculations"),
+        ("CampusScope", "College information discovery"),
+        ("PragyanAI Image Studio", "AI-powered image editing tools"),
+    ]
+    for i, (name, desc) in enumerate(projects):
+        y = 545 + i*49
+        accent = green if i%3==0 else cyan if i%3==1 else purple
+        s.append(f'<rect x="860" y="{y}" width="416" height="43" rx="10" fill="#1a2936" stroke="{accent}" stroke-opacity=".23"/>')
+        s.append(f'<rect x="860" y="{y}" width="4" height="43" rx="2" fill="{accent}"/>')
+        txt(876, y+17, name, 10.8, text_color, 700)
+        txt(876, y+33, desc, 8.7, muted, 400)
+        txt(1257, y+26, "↗", 15, accent, 700, 0, "middle")
+
+    txt(28, 907, "INNOVATE  ·  BUILD  ·  INSPIRE", 9, muted, 700, 2)
+    txt(1290, 907, "GITHUB PROFILE  /  SHIVASHARAN53", 9, muted, 700, 1.1, "end")
+    s.append("</svg>")
+    save_card("dashboard.svg", "\n".join(s))
+
 def main():
     CARDS.mkdir(parents=True, exist_ok=True)
     data = load_data()
     rows = normalized_days(data)
+    render_dashboard(data, rows)
     render_hero()
     render_about()
     render_experience_education()
