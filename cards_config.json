@@ -74,5 +74,38 @@
         "details": "Completed in 2023"
       }
     ]
+  },
+  "learning": {
+    "heading": "Curious today. Better tomorrow.",
+    "areas": [
+      {
+        "label": "GENERATIVE AI",
+        "title": "LLMs & RAG",
+        "details": [
+          "Prompt engineering",
+          "Retrieval-Augmented Generation",
+          "AI application development"
+        ]
+      },
+      {
+        "label": "MACHINE LEARNING",
+        "title": "Models & Vision",
+        "details": [
+          "Model training and evaluation",
+          "Computer vision projects",
+          "Deep learning fundamentals"
+        ]
+      },
+      {
+        "label": "DATA & ANALYTICS",
+        "title": "Python & Insights",
+        "details": [
+          "Python, SQL and PySpark",
+          "Pandas, NumPy and EDA",
+          "Power BI dashboards"
+        ]
+      }
+    ],
+    "note": "Certificates and achievements will be added here as they are completed and verified."
   }
 }

@@ -234,6 +234,32 @@ def render_experience_education():
     s += '</g>'
     save_card("experience-education.svg", s)
 
+
+def render_learning():
+    """Render current learning areas without implying unearned certificates."""
+    section = CONFIG.get("learning", {})
+    cards = section.get("areas", [])
+    h = 310
+    s = svg_start(h, "Currently learning and building") + surface(h, 1750)
+    s += f'<g {delay_style(1850)}>'
+    s += f'<text x="38" y="43" font-size="12" letter-spacing="2.8" class="gold">LEARNING &amp; BUILDING</text>'
+    s += f'<text x="38" y="81" font-size="25" font-weight="700" fill="{TEXT}">{esc(section.get("heading", "Curious today. Better tomorrow."))}</text>'
+    s += f'<text x="38" y="108" font-size="13.5" class="muted">Exploring ideas through hands-on practice and practical projects.</text>'
+    for index, item in enumerate(cards[:3]):
+        x = 34 + index * 312
+        accent = MINT if index != 1 else GOLD
+        s += f'<rect x="{x}" y="132" width="292" height="121" rx="15" fill="{PANEL_ALT}" stroke="{accent}" stroke-opacity=".34"/>'
+        s += f'<text x="{x+18}" y="160" font-size="10.5" letter-spacing="1.5" fill="{accent}">{esc(item.get("label", ""))}</text>'
+        s += f'<text x="{x+18}" y="188" font-size="17" font-weight="700" fill="{TEXT}">{esc(item.get("title", ""))}</text>'
+        for line_index, line in enumerate(item.get("details", [])[:3]):
+            y = 211 + line_index * 17
+            s += f'<circle cx="{x+22}" cy="{y-4}" r="2.8" fill="{accent}"/>'
+            s += f'<text x="{x+33}" y="{y}" font-size="11.5" class="muted">{esc(line)}</text>'
+    note = section.get("note", "Certificates and achievements will be added here as they are completed and verified.")
+    s += f'<text x="38" y="285" font-size="11.5" class="muted">{esc(note)}</text>'
+    s += '</g>'
+    save_card("learning.svg", s)
+
 def render_activity(data, rows):
     h = 400
     total, active, busiest, streak, months, busiest_count = calculate_metrics(rows)
@@ -315,6 +341,7 @@ def main():
     render_hero()
     render_about()
     render_experience_education()
+    render_learning()
     render_link_tile("github", "GitHub", "Explore my code and projects", 700)
     render_link_tile("linkedin", "LinkedIn", "Connect and follow my journey", 820)
     render_link_tile("email", "Email", "Get in touch", 940)

@@ -6,6 +6,8 @@
 
 <img src="cards/experience-education.svg" width="100%" alt="Experience and education" />
 
+<img src="cards/learning.svg" width="100%" alt="Currently learning and building" />
+
 <a href="https://github.com/Shivasharan53"><img src="cards/github.svg" width="32.5%" alt="GitHub" /></a>
 <a href="https://www.linkedin.com/in/shivasharanappa-genai/"><img src="cards/linkedin.svg" width="32.5%" alt="LinkedIn" /></a>
 <a href="mailto:shivasharanappapatil42@gmail.com"><img src="cards/email.svg" width="32.5%" alt="Email" /></a>
