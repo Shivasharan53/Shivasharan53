@@ -17,21 +17,19 @@ screenshots. Run without `STATIC=1` to create the animated SVG cards.
 
 ## Daily contribution refresh
 
-After merging the pull request, open **Settings → Secrets and variables →
-Actions** and add a repository secret named `PROFILE_TOKEN`. Use a GitHub
-personal access token with the `read:user` scope so the workflow can query
-your contribution calendar through GraphQL. The workflow also needs the
-repository's normal `GITHUB_TOKEN` write permission to commit refreshed cards.
+The workflow uses the repository's `GITHUB_TOKEN` to query the public
+contribution calendar through GitHub GraphQL. The initial run has already
+completed successfully, fetched 365 daily records and rendered all nine cards.
+No additional token or secret is required for the current setup.
 
-Then open **Actions → Refresh animated profile cards → Run workflow** once.
-After that, it runs daily at 00:17 UTC (05:47 IST) and commits the updated
-`data/contributions.json` and SVG cards.
+The workflow runs daily at 00:17 UTC (05:47 IST). You can also run it manually
+from **Actions → Refresh animated profile cards → Run workflow**.
 
 ## Fonts and portrait
 
-The current profile design uses the Arial-style typography already present
-in the original SVG assets. The workflow installs Liberation Sans (an
-Arial-metric-compatible open font), subsets it with `pyftsubset`, and embeds
+The current profile design keeps the Arial-style typography used by the
+original SVG assets. The workflow installs Liberation Sans, an
+Arial-metric-compatible open font, subsets it with `pyftsubset`, and embeds
 the WOFF subset as a base64 data URI inside each SVG. To use a different
 licensed font, place its TTF at `assets/fonts/profile.ttf`.
 
