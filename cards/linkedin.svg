@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="150" viewBox="0 0 1000 150" role="img" aria-label="LinkedIn">
+<title>LinkedIn</title><defs><linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#72c6ae"/><stop offset="1" stop-color="#d7a84b"/></linearGradient><style>
+@keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+text{font-family:Arial,Helvetica,sans-serif}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important;transform:none!important}}
+</style></defs>
+<rect width="1000" height="150" rx="26" fill="#111b24"/>
+<rect x="1" y="1" width="998" height="148" rx="24" fill="#17252b" stroke="#72c6ae" stroke-opacity=".22"/>
+<circle cx="81" cy="75" r="32" fill="#20383a" stroke="#d7a84b" stroke-opacity=".7"/>
+    <text x="81" y="83" font-size="22" fill="#72c6ae" text-anchor="middle" font-weight="700">in</text>
+    <text x="137" y="68" font-size="21" fill="#f0f5f1" font-weight="700">LinkedIn</text>
+    <text x="137" y="97" font-size="14" fill="#b9cbc5" >Connect and follow my journey</text>
+    <path d="M932 75h18m-7 -7l7 7 -7 7" fill="none" stroke="#d7a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

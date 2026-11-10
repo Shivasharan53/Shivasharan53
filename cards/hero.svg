@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="310" viewBox="0 0 1000 310" role="img" aria-label="Shivasharanappa | Generative AI Engineer">
+<title>Shivasharanappa | Generative AI Engineer</title><defs><linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#72c6ae"/><stop offset="1" stop-color="#d7a84b"/></linearGradient><style>
+@keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+text{font-family:Arial,Helvetica,sans-serif}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important;transform:none!important}}
+</style></defs>
+<rect width="1000" height="310" rx="26" fill="#111b24"/>
+<rect x="1" y="1" width="998" height="308" rx="24" fill="#17252b" stroke="#72c6ae" stroke-opacity=".22"/>
+<circle cx="817" cy="154" r="83" fill="none" stroke="#d7a84b" stroke-opacity=".45"/><circle cx="817" cy="154" r="61" fill="none" stroke="#72c6ae" stroke-width="2" stroke-dasharray="4 10"/>
+  <text x="58" y="65" font-size="13" fill="#d7a84b" letter-spacing="3.5">GENERATIVE AI / PYTHON / SOFTWARE</text>
+  <text x="56" y="137" font-size="47" fill="#f0f5f1" font-weight="700">Shivasharanappa</text>
+  <text x="59" y="181" font-size="22" fill="#72c6ae" >Generative AI Engineer Intern · Pragyan AI</text>
+  <text x="59" y="222" font-size="16" fill="#b9cbc5" >Building practical AI applications with Python, LLMs and machine learning.</text>
+  <path d="M817 119L829 142L852 154L829 166L817 189L805 166L782 154L805 142Z" fill="url(#brand)"/></svg>
