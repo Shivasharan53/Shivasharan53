@@ -373,7 +373,7 @@ def render_dashboard(data, rows):
   <path d="M26 0H0V26" fill="none" stroke="#9bb6cb" stroke-opacity=".035" stroke-width="1"/>
  </pattern>
  <clipPath id="avatarClip"><circle cx="150" cy="164" r="49"/></clipPath>
- <style>text{font-family:Inter,Arial,Helvetica,sans-serif}.muted{fill:#8ea1b5}</style>
+ <style>text{{font-family:Inter,Arial,Helvetica,sans-serif}}.muted{{fill:#8ea1b5}}</style>
 </defs>
 <rect width="1320" height="930" rx="28" fill="url(#dashBg)"/>
 <rect width="1320" height="930" rx="28" fill="url(#dashGrid)"/>
