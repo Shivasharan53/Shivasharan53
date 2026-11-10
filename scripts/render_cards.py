@@ -91,7 +91,11 @@ def surface(height, delay=0):
 
 def save_card(filename, markup):
     CARDS.mkdir(parents=True, exist_ok=True)
-    (CARDS / filename).write_text(markup + "</svg>\n", encoding="utf-8")
+    # Only add the root closing tag when a renderer has not already added it.
+    markup = markup.rstrip()
+    if not markup.endswith("</svg>"):
+        markup += "\n</svg>"
+    (CARDS / filename).write_text(markup + "\n", encoding="utf-8")
 
 def render_hero():
     h = 310
@@ -373,10 +377,10 @@ def render_widget_profile():
     s = widget_start(w, h, "Profile", "DEVELOPER IDENTITY", accent)
     s += '<circle cx="140" cy="116" r="59" fill="#243b49" stroke="#39df91" stroke-width="2.5" filter="url(#wglow)"/>'
     s += '<circle cx="140" cy="116" r="51" fill="#172638"/>'
-    avatar = CONFIG.get("avatar_url", "").strip()
     s += '<defs><clipPath id="profileAvatar"><circle cx="140" cy="116" r="49"/></clipPath></defs>'
-    if avatar:
-        s += f'<image x="91" y="67" width="98" height="98" href="{esc(avatar)}" xlink:href="{esc(avatar)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#profileAvatar)"/>'
+    avatar_path = CARDS / "avatar.png"
+    if avatar_path.exists():
+        s += '<image x="91" y="67" width="98" height="98" href="avatar.png" xlink:href="avatar.png" preserveAspectRatio="xMidYMid slice" clip-path="url(#profileAvatar)"/>'
     else:
         s += widget_text(140, 125, "SP", 27, "#ffffff", 800, "middle")
     s += widget_text(140, 199, CONFIG.get("name", "Shivasharanappa"), 16, "#f4f7fb", 800, "middle")
