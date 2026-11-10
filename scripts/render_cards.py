@@ -354,10 +354,16 @@ def widget_start(width, height, title, subtitle, accent="#39df91"):
  <linearGradient id="wglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset="1" stop-color="#ffffff" stop-opacity=".025"/></linearGradient>
  <filter id="wshadow" x="-25%" y="-25%" width="160%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/><feOffset dy="6" dx="1" result="o"/><feComponentTransfer in="o" result="s"><feFuncA type="linear" slope=".48"/></feComponentTransfer><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
  <filter id="wglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <pattern id="wgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="{accent}" stroke-opacity=".045" stroke-width=".8"/></pattern>
 </defs>
-<rect x="0.5" y="0.5" width="{width-1}" height="{height-1}" rx="20" fill="url(#wbg)" stroke="#405366" stroke-opacity=".75"/>
+<style>text{{font-family:Inter,Arial,Helvetica,sans-serif}}</style>
+<!-- Offset shadow plate: gives each panel a real raised dashboard edge. -->
+<rect x="5" y="8" width="{width-10}" height="{height-12}" rx="20" fill="#050a12" stroke="{accent}" stroke-opacity=".52"/>
+<rect x="0.5" y="0.5" width="{width-1}" height="{height-1}" rx="20" fill="url(#wbg)" stroke="#60758a" stroke-opacity=".72" filter="url(#wshadow)"/>
 <rect x="1" y="1" width="{width-2}" height="{height-2}" rx="19" fill="url(#wglass)"/>
-<path d="M22 2H{width-22}" stroke="url(#wtop)" stroke-width="2.5" stroke-linecap="round" opacity=".95"/>
+<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="19" fill="url(#wgrid)"/>
+<path d="M22 2H{width-22}" stroke="url(#wtop)" stroke-width="2.8" stroke-linecap="round" opacity=".98"/>
+<path d="M4 24V{height-24}" stroke="#ffffff" stroke-opacity=".08" stroke-width="1"/>
 {widget_text(22, 31, title.upper(), 10.5, accent, 700, spacing=1.5)}
 {widget_text(22, 49, subtitle, 9.5, "#91a5b8", 400)}
 '''
