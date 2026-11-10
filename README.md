@@ -1,71 +1,34 @@
-<div align="center">
+# Shivasharanappa
 
-# SHIVASHARANAPPA
-<sub>GENERATIVE AI ENGINEER INTERN · PRAGYAN AI</sub>
+**Generative AI Engineer Intern at Pragyan AI**
 
-</div>
+## About Me
 
-<table>
-<tr>
-<td width="23%" valign="top">
-<img src="cards/widget-profile.png" width="100%" alt="Profile card"/>
-</td>
-<td width="52%" valign="top">
-<img src="cards/widget-activity.png" width="100%" alt="GitHub activity metrics and monthly contributions"/>
-</td>
-<td width="25%" valign="top">
-<img src="cards/widget-toolkit.png" width="100%" alt="Core technology toolkit"/>
-</td>
-</tr>
-</table>
+I'm a Computer Science and Design graduate from PDA College of Engineering. I enjoy building practical applications using Python, Generative AI, machine learning and data technologies.
 
-<table>
-<tr>
-<td width="33%" valign="top">
-<img src="cards/widget-about.png" width="100%" alt="About me"/>
-</td>
-<td width="34%" valign="top">
-<img src="cards/widget-experience.png" width="100%" alt="Internship experience"/>
-</td>
-<td width="33%" valign="top">
-<img src="cards/widget-education.png" width="100%" alt="Education"/>
-</td>
-</tr>
-</table>
+## Experience
 
-## SELECTED PROJECTS
+- **Generative AI Engineer Intern**, Pragyan AI
+- **Big Data Analytics Intern**, Krugna Technologies
 
-<table>
-<tr>
-<td width="33%">
-<a href="https://github.com/Shivasharan53/NammaClean-AI"><img src="cards/widget-project-nammaclean.png" width="100%" alt="NammaClean AI"/></a>
-</td>
-<td width="33%">
-<a href="https://github.com/Shivasharan53/Live-Market-Sales-Analysis"><img src="cards/widget-project-market.png" width="100%" alt="Live Market Sales Analysis"/></a>
-</td>
-<td width="33%">
-<a href="https://github.com/Shivasharan53/PragyanAI_python_project_Document-Voice-Studio"><img src="cards/widget-project-voice.png" width="100%" alt="Document Voice Studio"/></a>
-</td>
-</tr>
-<tr>
-<td width="33%">
-<a href="https://github.com/Shivasharan53/PragyanAI_python_project_SmartLoan-India"><img src="cards/widget-project-loan.png" width="100%" alt="SmartLoan India"/></a>
-</td>
-<td width="33%">
-<a href="https://github.com/Shivasharan53/PragyanAI_python_project_CampusScope"><img src="cards/widget-project-campus.png" width="100%" alt="CampusScope"/></a>
-</td>
-<td width="33%">
-<a href="https://github.com/Shivasharan53/PragyanAI_Image-Studio-project"><img src="cards/widget-project-imagestudio.png" width="100%" alt="PragyanAI Image Studio"/></a>
-</td>
-</tr>
-</table>
+## Skills
 
-<img src="cards/widget-contributions.png" width="100%" alt="GitHub contribution map"/>
+Python · SQL · PySpark · Power BI · Pandas · NumPy · LangChain · FAISS · Streamlit · FastAPI · Machine Learning · RAG
 
-<div align="center">
+## Education
+
+- **B.E. in Computer Science and Design**, PDA College of Engineering
+- **Diploma in Mechanical Engineering**, Government Polytechnic, Gulbarga
+
+## Selected Projects
+
+- [NammaClean AI](https://github.com/Shivasharan53/NammaClean-AI)
+- [Live Market Sales Analysis](https://github.com/Shivasharan53/Live-Market-Sales-Analysis)
+- [Document Voice Studio](https://github.com/Shivasharan53/PragyanAI_python_project_Document-Voice-Studio)
+- [SmartLoan India](https://github.com/Shivasharan53/PragyanAI_python_project_SmartLoan-India)
+- [CampusScope](https://github.com/Shivasharan53/PragyanAI_python_project_CampusScope)
+- [PragyanAI Image Studio](https://github.com/Shivasharan53/PragyanAI_Image-Studio-project)
+
+## Connect
 
 [GitHub](https://github.com/Shivasharan53) · [LinkedIn](https://www.linkedin.com/in/shivasharanappa-genai/) · [Email](mailto:shivasharanappapatil42@gmail.com) · [Portfolio](https://shiva-portfolio.app.orvisai.com)
-
-<sub>INNOVATE · BUILD · INSPIRE</sub>
-
-</div>
